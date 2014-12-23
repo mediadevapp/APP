@@ -1,39 +1,4 @@
-<?PHP 
-
-if (empty($_POST['mobilenum'])){
-echo "没有输入注册手机号";
-exit(0);
-} 
-
-
-
-
-  $username = $_POST['mobilenum'];
-  $nickname = $_POST['nickname'];
-  $phrase = $_POST['phrase'];
-  $sex = $_POST['sex'];
-  $xing = $_POST['xing'];
-  $photo = $_POST['photo'];
-  $userAge = $_POST['userAge'];
-  
-  $userId =getRandStr($length=10);
-  //echo $userId;
-
-
-
-function getRandStr($length) {  
-
-$str = '0123456789'; 
-$randString = ''; 
-$len = strlen($str)-1; 
-for($i = 0;$i < $length;$i ++)
-{ 
-$num = mt_rand(0, $len); $randString .= $str[$num];
- } 
- return $randString ; 
-}
-
-
+<?php
 //php获取中文字符拼音首字母
 function getFirstCharter($str){
     if(empty($str)){return '';}
@@ -68,43 +33,6 @@ function getFirstCharter($str){
     if($asc>=-11055&&$asc<=-10247) return 'Z';
     return null;
 }
-//echo getFirstCharter($nickname);
-
-$capital = getFirstCharter($nickname);
-//echo $capital;
-
-//地址
-$url = "120.131.70.218";
-//账号
-$user = "root";
-//密码
-$password = "1q2w3e4r5t6yJUSHI$";
-//连接
-$con = mysql_connect($url,$user,$password);
-//设置编码机
-mysql_query("set names 'utf8'");
-//连接数据库
-mysql_select_db("star_app");
-
-$sql = "insert into userinfo (uid,username,nickname,phrase,sex,xing,capital,userage)  values('$userId','$username','$nickname','$phrase','$sex','$xing','$capital','$userAge')";
-
-//echo $sql;
-
- if (!mysql_query($sql,$con))
-
- {
-
-   die('Error: ' . mysql_error());
-
- }
-
- echo "Success";
-
-  //关闭连接
-
- mysql_close($con)
-
-
+echo getFirstCharter('****');
 
 ?>
-

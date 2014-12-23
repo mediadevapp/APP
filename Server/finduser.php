@@ -1,16 +1,5 @@
 <?php
 
-
-if (empty($_GET['uid'])){
-echo "没有输入用户ID";
-exit(0);
-} 
-$s_uid =  $_GET['uid'];
-
-//echo "星座名： ".$s_name." "; 
-
-
-
 /**************************************************************
  *
  *	使用特定function对数组中所有元素做处理
@@ -71,18 +60,6 @@ $array = array
 
 echo JSON($array);
  *************************************************************/
- 
-/**************************************************************
-生日计算年龄方法 
-$birth='1985.6.23';
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-echo "生日:$birth\n";
-echo "年龄:$age\n";
- *************************************************************/
 
 
 $con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
@@ -101,48 +78,47 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT * FROM userinfo where uid='".$s_uid."'";
+  $sql = "SELECT * FROM userinfo ";
   
   //echo($sql);
 
   $result = mysql_query( $sql);
+  $json=array();
+  $arr=array(); 
 
-
-
-  while($row = mysql_fetch_array($result))
+ while($row = mysql_fetch_array($result))
 
   {
 
-  //echo $row['id'] . " " . $row['name'];
-$birth= $row['userage'];
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["uid"]=$row["uid"];
+   $arr["nickname"]=$row["nickname"];
+   $arr["phrase"]=$row["phrase"];
+   $arr["xing"]=$row["xing"];
+   $arr["sex"]=$row["sex"];
+
+
+//生日字段处理   
+$birth=$row["userage"];
 list($by,$bm,$bd)=explode('.',$birth);
 $cm=date('n');
 $cd=date('j');
 $age=date('Y')-$by-1;
 if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-  
-  
-  $array = array
-       (
-          'id'=>$row['uid'],
-          'username'=> $row['username'],
-          'nickname'=> $row['nickname'],
-          'phrase'=> $row['phrase'],
-          'photo'=> $row['photo'],
-          'birthday'=> $row['userage'],
-          'fans'=> $row['fans'],
-          'follow'=> $row['Follow'],
-          'friend'=> $row['Friend'],
-          'xing'=> $row['xing'],
-          'userage'=> $age
-          
-       );
-  
-  
-  echo JSON($array);
 
+//echo "生日:$birth\n";
+//echo "年龄:$age\n";
+
+
+   
+   $arr["userage"]=$age;
+   $arr["photo"]=$row["photo"];
   
-   }
+   $json[]=$arr; 
+   
+  }
+  
+  echo JSON($json); 
 
   }
 
