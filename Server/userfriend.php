@@ -6,7 +6,7 @@ echo "没有输入用户ID";
 exit(0);
 } 
 $s_uid =  $_GET['uid'];
-
+//echo $s_uid;
 
 
 /**************************************************************
@@ -94,40 +94,66 @@ if (!$con)
   //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
   
   $sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."') ORDER BY capital ASC ";
-  
-  
   //echo($sql);
 
   $result = mysql_query( $sql);
-  $json=array();
   
-  $arr=array(); 
+  $json=array();
+  $arr=array();
+  
+  //$gar = array("somearray" => array());
+  
 
+   
  while($row = mysql_fetch_array($result))
 
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
    
-   $arr["group"]=$row["capital"];
-   $arr["uid"]=$row["uid"];
-   $arr["nickname"]=$row["nickname"];
-   $arr["phrase"]=$row["phrase"];
-   $arr["xing"]=$row["xing"];
-   $arr["photo"]=$row["photo"];
-   $arr["userage"]=$row["userage"];
+   if($row["capital"]=="E"){
+   
+   
+      $e .= "ff".$row["uid"];
+   
+  
+      
+         }
+
+
+   
+     
+   //$arr["group"]=$row["capital"];
+   //$arr["uid"]=$row["uid"];
+   //$arr["nickname"]=$row["nickname"];
+   //$arr["phrase"]=$row["phrase"];
+   //$arr["xing"]=$row["xing"];
+   //$arr["photo"]=$row["photo"];
+   //$arr["userage"]=$row["userage"];
  
    
-   
-   $json[]=$arr; 
-   
+  
+  
   }
   
+  echo $e;
+  //$all = array_merge($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$h,$i,$j,$k,$l,$m,$n,$o,$p,$q,$r,$s,$t,$u,$v,$w,$x,$y,$z); 
+  
+  $all=array("wang"=>18, "li"=>20, "zhang"=>25); 
+  $json[]= $all;
   echo JSON($json); 
 
   }
 
 mysql_close($con);
+
+
+
+function addkey(&$val, $key, $param)
+{
+ $val[$param['key']] = $param['val'];
+
+}
 
 
 

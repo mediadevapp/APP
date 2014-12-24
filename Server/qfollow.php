@@ -13,23 +13,21 @@ exit(0);
 $uuid = $_POST['uid'];
 $fuid = $_POST['fid'];
 //======================================
-//用户之间关注操作
+//用户之间取消关注操作
 if (isfans($fuid)==''){
 
 echo "#TA不是您的粉丝#";
 
-followuser($fuid,$uuid);
-fanuser($fuid,$uuid);
+delfollowuser($fuid,$uuid);
+delfanuser($fuid,$uuid);
 
 
 }else{
 	
 echo "#TA是您的粉丝#";
 
-fanuser($fuid,$uuid);
-
-frienduser($uuid,$fuid);
-
+delfrienduser($uuid,$fuid);
+delfanuser($fuid,$uuid);
 
 
 } 
@@ -41,7 +39,7 @@ frienduser($uuid,$fuid);
 
 
 
-function followuser($id,$fid){
+function delfollowuser($id,$fid){
 	
 //地址
 $url = "120.131.70.218";
@@ -56,7 +54,8 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
+$sql = "DELETE FROM `followinfo` WHERE follow_id ='$fid' and uid ='$id'";
+
 
  if (!mysql_query($sql,$con))
 
@@ -66,7 +65,7 @@ $sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
 
  }
 
- echo "#您已关注了TA#";
+ echo "#您对TA已经取消关注#";
   //关闭连接
   mysql_close($con);
 
@@ -74,7 +73,7 @@ $sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
 
 
 
-function frienduser($id,$fid){
+function delfrienduser($id,$fid){
 //地址
 $url = "120.131.70.218";
 //账号
@@ -87,7 +86,9 @@ $con = mysql_connect($url,$user,$password);
 mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
-$sql = "insert into friendinfo (uid,friend_id)  values('$id','$fid')";
+
+$sql = "DELETE FROM `friendinfo` WHERE friend_id ='$fid' and uid ='$id'";
+
  if (!mysql_query($sql,$con))
  {
 
@@ -95,7 +96,7 @@ $sql = "insert into friendinfo (uid,friend_id)  values('$id','$fid')";
 
  }
 
- echo "#互相关注,成为好友#";
+ echo "#取消关注你们已经不是好友#";
 
   //关闭连接
  mysql_close($con);
@@ -103,7 +104,7 @@ $sql = "insert into friendinfo (uid,friend_id)  values('$id','$fid')";
 }
 
 
-function fanuser($id,$fid){
+function delfanuser($id,$fid){
 
 //地址
 $url = "120.131.70.218";
@@ -118,7 +119,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into fansinfo (uid,fan_id)  values('$id','$fid')";
+$sql = "DELETE FROM `fansinfo` WHERE fan_id ='$fid' and uid ='$id'";
  
  if (!mysql_query($sql,$con))
  {
@@ -127,7 +128,7 @@ $sql = "insert into fansinfo (uid,fan_id)  values('$id','$fid')";
 
  }
 
- echo "#你已经是TA的粉丝#";
+ echo "#取消关注您已经不是TA的粉丝#";
 
   //关闭连接
  mysql_close($con);

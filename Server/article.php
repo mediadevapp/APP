@@ -98,6 +98,7 @@ if (!$con)
    $arr["count1"]=$row["zcount"];
    $arr["count2"]=$row["pcount"];
    $arr["count3"]=$row["fcount"];
+   
    $json[]=$arr; 
    
   }
