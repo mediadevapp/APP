@@ -1,5 +1,17 @@
 <?php
 
+
+if (empty($_GET['uid'])){
+
+echo "没有输入用户ID";
+exit(0);
+}
+
+
+$uuid = $_GET['uid'];
+//$fuid = $_POST['fid'];
+
+
 /**************************************************************
  *
  *	使用特定function对数组中所有元素做处理
@@ -78,7 +90,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT * FROM userinfo ";
+ $sql="SELECT * FROM userinfo WHERE uid not in (SELECT uid FROM fansinfo WHERE fan_id = '".$uuid."') order by capital asc ";
   
   //echo($sql);
 
@@ -91,12 +103,14 @@ if (!$con)
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["group"]=$row["capital"];
    $arr["uid"]=$row["uid"];
    $arr["nickname"]=$row["nickname"];
    $arr["phrase"]=$row["phrase"];
    $arr["xing"]=$row["xing"];
    $arr["sex"]=$row["sex"];
-
+   
+ 
 
 //生日字段处理   
 $birth=$row["userage"];

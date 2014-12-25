@@ -13,7 +13,7 @@ exit(0);
   $phrase = $_POST['phrase'];
   $sex = $_POST['sex'];
   $xing = $_POST['xing'];
-  $photo = $_POST['photo'];
+  $photo = "http://120.131.70.218/uploader/upload/demo.jpg";
   $userAge = $_POST['userAge'];
   
   $userId =getRandStr($length=10);
@@ -86,7 +86,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into userinfo (uid,username,nickname,phrase,sex,xing,capital,userage)  values('$userId','$username','$nickname','$phrase','$sex','$xing','$capital','$userAge')";
+$sql = "insert into userinfo (uid,username,nickname,phrase,sex,xing,photo,capital,userage)  values('$userId','$username','$nickname','$phrase','$sex','$xing','$photo','$capital','$userAge')";
 
 //echo $sql;
 

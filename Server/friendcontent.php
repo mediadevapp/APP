@@ -85,7 +85,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT *  FROM frcontent WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."')OR uid = '".$s_uid."'";
+  $sql = "SELECT *  FROM frcontent WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."' and allow = 'Y' ) OR uid = '".$s_uid."'";
   
   //echo($sql);
 

@@ -1,18 +1,25 @@
-<?PHP 
+<?php
 
-//if (empty($_POST['uid'])){echo "请上传用户id";exit(0);} 
+if (empty($_GET['id'])){
+echo "没有当前用户ID";
+exit(0);
+} 
 
-   $uid = $_POST['uid'];
-//echo $userId;
+if (empty($_GET['fid'])){
+echo "没有被操作用户ID";
+exit(0);
+} 
 
-  $username = $_POST['username'];
-  $nickname = $_POST['nickname'];
-  $phrase = $_POST['phrase'];
-  $xing = $_POST['xing'];
-  $userAge = $_POST['userAge'];
-  
-  //$userId =getRandStr($length=10);
-  
+if (empty($_GET['allow'])){
+echo "权限参数输入错误";
+exit(0);
+} 
+
+$uuid =  $_GET['id'];
+$f_uid = $_GET['fid'];
+$allow = $_GET['allow'];
+
+
 
 
 
@@ -31,8 +38,8 @@ mysql_select_db("star_app");
 
 //$sql = "insert into userinfo (uid,username,nickname,phrase,xing,photo,userage)  values('$userId','$username','$nickname','$phrase','$xing','$photo','$userAge')";
 
-
-$sql = "UPDATE `userinfo` SET `username` = '$username',`nickname` = '$nickname', `phrase` = '$phrase',`xing` = '$xing',  `userage` = '$userAge' WHERE `userinfo`.`uid` = '$uid'";
+ $sql = "UPDATE `star_app`.`friendinfo` SET `allow` = '$allow' WHERE  `friendinfo`.`friend_id` = '$f_uid' AND `friendinfo`.`uid` = '$uuid'";
+  
 
 
  if (!mysql_query($sql,$con))
@@ -52,4 +59,3 @@ $sql = "UPDATE `userinfo` SET `username` = '$username',`nickname` = '$nickname',
 
 
 ?>
-

@@ -93,7 +93,7 @@ if (!$con)
   
   //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
   
-  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT follow_id FROM followinfo WHERE uid = '".$s_uid."')";
+  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT uid FROM followinfo WHERE follow_id = '".$s_uid."') order by capital asc ";
   
   
   //echo($sql);
@@ -107,6 +107,7 @@ if (!$con)
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["group"]=$row["capital"];
    $arr["uid"]=$row["uid"];
    $arr["nickname"]=$row["nickname"];
    $arr["phrase"]=$row["phrase"];

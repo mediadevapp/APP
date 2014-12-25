@@ -14,12 +14,29 @@ $uuid = $_POST['uid'];
 $fuid = $_POST['fid'];
 //======================================
 //用户之间关注操作
+
+
+
+
 if (isfans($fuid)==''){
 
 echo "#TA不是您的粉丝#";
 
+
+if (isfollow($fuid)==''){
+
 followuser($fuid,$uuid);
 fanuser($fuid,$uuid);
+
+
+}else{
+	
+	echo "您已经关注过TA";
+	exit(0);
+	
+}
+
+
 
 
 }else{
@@ -29,9 +46,6 @@ echo "#TA是您的粉丝#";
 fanuser($fuid,$uuid);
 
 frienduser($uuid,$fuid);
-
-
-
 } 
 
 
@@ -58,6 +72,8 @@ mysql_select_db("star_app");
 
 $sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
 
+
+
  if (!mysql_query($sql,$con))
 
  {
@@ -66,7 +82,7 @@ $sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
 
  }
 
- echo "#您已关注了TA#";
+ echo "#您刚刚关注了TA#";
   //关闭连接
   mysql_close($con);
 
@@ -228,6 +244,57 @@ mysql_close($con);
 return $fr;
 
 }
+
+
+function isfollow($fid){
+
+
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("star_app", $con);
+  
+  $sql = "SELECT * FROM followinfo where follow_id='".$fid."'";
+  
+  //echo($sql);
+
+  $result = mysql_query( $sql);
+
+
+
+  while($row = mysql_fetch_array($result))
+
+  {
+
+  //echo $row['id'] . " " . $row['name'];
+  
+     $fr = $row['uid'];
+   }
+
+  }
+
+mysql_close($con);
+
+
+
+return $fl;
+	
+	
+	
+}
+
 
 ?>
 
