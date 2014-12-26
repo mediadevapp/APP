@@ -171,7 +171,7 @@
 支持格式：JSON
 请求方式：HTTP POST
 请求示例：http://120.131.70.218/uploader/uppoo
-接口备注：uid=6283429397
+接口备注：enctype="multipart/form-data"  uid=6283429397
 请求参数：
   	名称 	类型 	必填 	说明
         uid             YES      
@@ -243,8 +243,6 @@
        content          YES
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 	
 
-
-
 接口名称：星座APP用户朋友圈内容权限接口
 接口地址：http://120.131.70.218/friendcontent
 支持格式：JSON
@@ -257,3 +255,33 @@
        fid
        allow         Y or N    
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 	
+
+接口名称：星座APP用户朋友圈内容发布接口[文本]
+接口地址：http://120.131.70.218/addcontent
+支持格式：JSON
+请求方式：HTTP POST
+请求示例：http://120.131.70.218/addcontent
+接口备注：模糊查询
+请求参数：
+  	名称 	类型 	必填 	说明
+       uid                   
+       title
+       content
+       nickname
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 	
+
+接口名称：星座APP用户朋友圈内容发布接口[图文]
+接口地址：http://120.131.70.218/addpiccontent
+支持格式：JSON
+请求方式：HTTP POST
+请求示例：http://120.131.70.218/addpiccontent
+接口备注：模糊查询
+请求参数：
+  	名称 	类型 	必填 	说明
+       uid                   
+       
+       content
+       file          YES
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 	
+
+

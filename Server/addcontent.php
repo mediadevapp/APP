@@ -5,6 +5,11 @@ echo "没有输入用户ID";
 exit(0);
 } 
 
+if (empty($_POST['title'])){
+echo "标题不能为空";
+exit(0);
+} 
+
 if (empty($_POST['content'])){
 echo "内容不能为空";
 exit(0);
@@ -15,10 +20,7 @@ echo "昵称不能为空";
 exit(0);
 } 
 
-if (empty($_POST['title'])){
-echo "标题不能为空";
-exit(0);
-} 
+
 
 
 $uid=$_POST['uid'];

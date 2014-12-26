@@ -1,12 +1,26 @@
 <?php
 
-
 if (empty($_POST['uid'])){
 echo "请上传用户id";
 exit(0);
 } 
 
+
+if (empty($_POST['nickname'])){
+echo "请输入用户昵称";
+exit(0);
+} 
+
+
+if (empty($_POST['content'])){
+echo "请上传内容";
+exit(0);
+} 
+
 $uid = $_POST['uid'];
+$nickname = $_POST['nickname'];
+$ucontent = $_POST['content'];
+
 
 if ((($_FILES["file"]["type"] == "image/gif")
 || ($_FILES["file"]["type"] == "image/jpeg")
@@ -47,7 +61,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
 
       
-      uploadpic($uid,$_picpath);
+      uploadpic($uid,$nickname,$ucontent,$_picpath);
       
    
       }
@@ -60,7 +74,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       
       $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
       
-      uploadpic($uid,$_picpath);
+      uploadpic($uid,$nickname,$ucontent,$_picpath);
       //echo  $_picpath;
       
       }
@@ -71,7 +85,7 @@ else
   echo "Invalid file";
   }
   
-function uploadpic($uid,$path){
+function uploadpic($uid,$nickname,$content,$path){
 	
 	
 	//地址
@@ -87,7 +101,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "UPDATE `userinfo` SET `photo` = '$path' WHERE `userinfo`.`uid` = '$uid'";
+$sql = "insert into frcontent (uid,nickname,content,photo)values('$uid','$nickname','$ucontent','$path')";
 
 //echo($sql);
 
