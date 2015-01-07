@@ -13,8 +13,8 @@ exit(0);
   $phrase = $_POST['phrase'];
   $sex = $_POST['sex'];
   $xing = $_POST['xing'];
-  $photo = "http://120.131.70.218/uploader/upload/demo.jpg";
-  $userAge = $_POST['userAge'];
+  $photo = "http://star.allappropriate.com/uploader/upload/demo.jpg";
+  $userAge = $_POST['birthday'];
   
   $userId =getRandStr($length=10);
   //echo $userId;
