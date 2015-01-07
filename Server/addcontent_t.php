@@ -1,12 +1,13 @@
 =============================================================
 
 <br>
-<form action="addcontent.php" method="post">
+<form action="addpiccontent.php" method="post" enctype="multipart/form-data">
 
 <input type="text" name="uid" value="6283429397"/><br>
 <input type="text" name="nickname" value="AngleBaby"/><br>
 <input type="text" name="title" value="标题"/><br>
 <input type="text" name="content" value="内容"/><br>
+<input type="file" name="file" value=""/><br>
 
 
 <input type="submit" name="btn_submit" value="提交"/>

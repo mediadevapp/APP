@@ -103,7 +103,7 @@ $con = mysql_connect($url,$user,$password);
 mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
-$sql = "insert into friendinfo (uid,friend_id)  values('$id','$fid')";
+$sql = "insert into friendinfo (uid,friend_id,allow)  values('$id','$fid','Y')";
  if (!mysql_query($sql,$con))
  {
 

@@ -1,15 +1,15 @@
 <?PHP 
 
-//if (empty($_POST['uid'])){echo "请上传用户id";exit(0);} 
+if (empty($_POST['uid'])){echo "请上传用户id";exit(0);} 
 
    $uid = $_POST['uid'];
 //echo $userId;
 
-  $username = $_POST['username'];
+  $username = $_POST['mobilenum'];
   $nickname = $_POST['nickname'];
   $phrase = $_POST['phrase'];
   $xing = $_POST['xing'];
-  $userAge = $_POST['userAge'];
+  $userAge = $_POST['birthday'];
   
   //$userId =getRandStr($length=10);
   

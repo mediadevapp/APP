@@ -6,20 +6,16 @@ exit(0);
 } 
 
 
-if (empty($_POST['nickname'])){
-echo "请输入用户昵称";
-exit(0);
-} 
-
-
 if (empty($_POST['content'])){
-echo "请上传内容";
+echo "请输入内容";
 exit(0);
 } 
+
 
 $uid = $_POST['uid'];
-$nickname = $_POST['nickname'];
-$ucontent = $_POST['content'];
+$content = $_POST['content'];
+	
+
 
 
 if ((($_FILES["file"]["type"] == "image/gif")
@@ -37,31 +33,33 @@ if ((($_FILES["file"]["type"] == "image/gif")
  
   else
     {
+    
+    /*
     echo "Upload: " . $_FILES["file"]["name"] . "<br />";
     echo "Type: " . $_FILES["file"]["type"] . "<br />";
     echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
     echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
     echo "file: " .$_FILES["file"]["name"]. "<br />";
-
+   */
     
-    if (file_exists("upload/" . $_FILES["file"]["name"]))
+    
+    if (file_exists("pics/" . $_FILES["file"]["name"]))
       {
    
    
-   
-      echo $_FILES["file"]["name"] . " already exists auto rename by the time ";
+      //echo $_FILES["file"]["name"] . " already exists auto rename by the time ";
       
       $_FILES["file"]["name"] = date("Y-m-d") . rand() . ".png";
       
        move_uploaded_file($_FILES["file"]["tmp_name"],
       
-      "upload/" . $_FILES["file"]["name"]);
+      "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
+      $_picpath = "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"];  
 
       
-      uploadpic($uid,$nickname,$ucontent,$_picpath);
+      uploadpic($uid,$content,$_picpath);
       
    
       }
@@ -69,12 +67,12 @@ if ((($_FILES["file"]["type"] == "image/gif")
       {
       move_uploaded_file($_FILES["file"]["tmp_name"],
       
-      "upload/" . $_FILES["file"]["name"]);
+      "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
+      $_picpath = "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"];  
       
-      uploadpic($uid,$nickname,$ucontent,$_picpath);
+      uploadpic($uid,$content,$_picpath);
       //echo  $_picpath;
       
       }
@@ -85,7 +83,7 @@ else
   echo "Invalid file";
   }
   
-function uploadpic($uid,$nickname,$content,$path){
+function uploadpic($uid,$content,$path){
 	
 	
 	//地址
@@ -101,7 +99,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into frcontent (uid,nickname,content,photo)values('$uid','$nickname','$ucontent','$path')";
+$sql = "UPDATE `frcontent` SET `photo` = '$path',`content` = '$content' WHERE `frcontent`.`uid` = '$uid'";
 
 //echo($sql);
 

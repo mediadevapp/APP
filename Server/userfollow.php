@@ -114,6 +114,10 @@ if (!$con)
    $arr["xing"]=$row["xing"];
    $arr["photo"]=$row["photo"];
    $arr["userage"]=$row["userage"];
+   
+   
+   //print_r(array_keys($arr));
+   
    $json[]=$arr; 
    
   }

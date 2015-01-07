@@ -1,12 +1,31 @@
 <?PHP 
  
+ 
+if (empty($_POST['nickname'])){
+echo "没有输入用户昵称";
+exit(0);
+} 
+
+
+if (empty($_POST['content'])){
+echo "没有输入内容";
+exit(0);
+} 
+
+
+
   $nickname = $_POST['nickname'];
   $content = $_POST['content'];
   
   $userId =getRandStr($length=10);
-  echo $userId;
-
-
+  echo "昵称".$nickname;
+  echo "内容".$content;
+  
+  
+  feedback($userId,$nickname,$content);
+  
+  
+  
 
 function getRandStr($length) {  
 
@@ -21,6 +40,7 @@ $num = mt_rand(0, $len); $randString .= $str[$num];
 }
 
 
+function feedback($uid,$nickname,$content){
 
 //地址
 $url = "120.131.70.218";
@@ -45,11 +65,16 @@ $sql = "insert into feedback (id,nickname,comment)  values('$userId','$nickname'
 
  }
 
- echo "添加一条记录";
+ echo "谢谢反馈";
 
   //关闭连接
 
  mysql_close($con)
+
+
+	
+	
+}
 
 
 

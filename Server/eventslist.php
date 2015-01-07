@@ -1,12 +1,5 @@
 <?php
 
-if (empty($_GET['id'])){
-echo "没有输入用户ID";
-exit(0);
-} 
-$s_uid =  $_GET['id'];
-
-
 /**************************************************************
  *
  *	使用特定function对数组中所有元素做处理
@@ -85,7 +78,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT *  FROM frcontent WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."' and allow = 'Y' ) OR uid = '".$s_uid."'";
+  $sql = "SELECT * FROM eventsinfo ";
   
   //echo($sql);
 
@@ -98,17 +91,11 @@ if (!$con)
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
-   $arr["contentid"]=$row["cid"];
-   $arr["uid"]=$row["uid"];
    $arr["title"]=$row["title"];
    $arr["content"]=$row["content"];
-   $arr["photo"]=$row["photo"];
-   $arr["username"]=$row["nickname"];
-   $arr["zcount"]=$row["zcount"];
+   $arr["photo"]=$row["pics"];
+  
    
-   $arr["comment"]=$row["comments"];
-   
-   $arr["crtime"]=$row["crtime"];
    $json[]=$arr; 
    
   }

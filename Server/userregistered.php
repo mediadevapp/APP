@@ -73,6 +73,8 @@ function getFirstCharter($str){
 $capital = getFirstCharter($nickname);
 //echo $capital;
 
+
+
 //地址
 $url = "120.131.70.218";
 //账号
@@ -98,11 +100,15 @@ $sql = "insert into userinfo (uid,username,nickname,phrase,sex,xing,photo,capita
 
  }
 
- echo "Success";
+ //echo "Success";
+ echo $userId;
 
   //关闭连接
 
  mysql_close($con)
+ 
+ 
+ 
 
 
 

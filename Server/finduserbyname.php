@@ -85,7 +85,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT * FROM userinfo where nickname like '".$s_name."' ";
+  $sql = "SELECT * FROM userinfo where nickname like '%".$s_name."%' ";
   
  // echo($sql);
 

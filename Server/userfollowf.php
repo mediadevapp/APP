@@ -1,10 +1,12 @@
 <?php
 
-if (empty($_GET['id'])){
+
+if (empty($_GET['uid'])){
 echo "没有输入用户ID";
 exit(0);
 } 
-$s_uid =  $_GET['id'];
+$s_uid =  $_GET['uid'];
+
 
 
 /**************************************************************
@@ -30,10 +32,16 @@ function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
         }
  
         if ($apply_to_keys_also && is_string($key)) {
+        
             $new_key = $function($key);
+            
             if ($new_key != $key) {
+            
                 $array[$new_key] = $array[$key];
+            
                 unset($array[$key]);
+        
+        
             }
         }
     }
@@ -85,9 +93,16 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT *  FROM frcontent WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."' and allow = 'Y' ) OR uid = '".$s_uid."'";
   
-  //echo($sql);
+  
+  //$sql = "SELECT * FROM userinfo ";
+  
+  //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
+  
+  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT uid FROM followinfo WHERE follow_id = '".$s_uid."') order by capital asc ";
+  
+  
+  echo($sql);
 
   $result = mysql_query( $sql);
   $json=array();
@@ -98,27 +113,63 @@ if (!$con)
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
-   $arr["contentid"]=$row["cid"];
+   $arr["group"]=$row["capital"];
    $arr["uid"]=$row["uid"];
-   $arr["title"]=$row["title"];
-   $arr["content"]=$row["content"];
+   $arr["nickname"]=$row["nickname"];
+   $arr["phrase"]=$row["phrase"];
+   $arr["xing"]=$row["xing"];
    $arr["photo"]=$row["photo"];
-   $arr["username"]=$row["nickname"];
-   $arr["zcount"]=$row["zcount"];
+   $arr["userage"]=$row["userage"];
    
-   $arr["comment"]=$row["comments"];
-   
-   $arr["crtime"]=$row["crtime"];
-   $json[]=$arr; 
+ 
+   //$json[]=$arr; 
+   $json[]= $arr; 
    
   }
   
-  echo JSON($json); 
+ 
+  
 
+  echo JSON(array_merge_multi($json)); 
+ 
+  
   }
 
 mysql_close($con);
 
 
+/**
+ * 多维数组合并（支持多数组）
+ * @return array
+ */
+
+
+function array_merge_multi($array){
+
+
+ 
+                   $new_array = array();  
+      
+                   foreach($array as $key => $value){  
+      
+                    $new_array[$value[group]]=$value;  
+                    
+                     
+           
+              
+                   
+                   
+                  }  
+
+     
+     
+     
+
+
+
+
+return $new_array;
+
+}
 
 ?>

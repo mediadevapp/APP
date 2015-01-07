@@ -44,7 +44,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "upload/" . $_FILES["file"]["name"]);
       
       
-      $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
+      $_picpath = "http://star.allappropriate.com/uploader/" . "upload/" . $_FILES["file"]["name"];  
 
       
       uploadpic($uid,$_picpath);
@@ -58,7 +58,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "upload/" . $_FILES["file"]["name"]);
       
       
-      $_picpath = "http://120.131.70.218/uploader/" . "upload/" . $_FILES["file"]["name"];  
+      $_picpath = "http://star.allappropriate.com/uploader/" . "upload/" . $_FILES["file"]["name"];  
       
       uploadpic($uid,$_picpath);
       //echo  $_picpath;

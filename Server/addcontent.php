@@ -5,10 +5,7 @@ echo "没有输入用户ID";
 exit(0);
 } 
 
-if (empty($_POST['title'])){
-echo "标题不能为空";
-exit(0);
-} 
+
 
 if (empty($_POST['content'])){
 echo "内容不能为空";
@@ -29,7 +26,7 @@ $title=$_POST['title'];
 $content=$_POST['content'];
 
 
-//echo getFirstCharter($nickname);
+echo "uid=".$uid."nickname=".$nickname."titel=".$title."content=".$content;
 
 
 
