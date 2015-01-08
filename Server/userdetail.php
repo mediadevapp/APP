@@ -134,7 +134,8 @@ if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
           'follow'=> $row['Follow'],
           'friend'=> $row['Friend'],
           'xing'=> $row['xing'],
-          'userage'=> $age
+          'userage'=> $age,
+          'pics'=>$row['pics']
           
        );
   

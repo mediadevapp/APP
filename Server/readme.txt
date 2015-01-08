@@ -43,7 +43,7 @@
 支持格式：JSON
 请求方式：HTTP GET
 请求示例：http://star.allappropriate.com/userdetail.php?uid=6283429397 
-接口备注：
+接口备注：pics 用户资料图片';'分割 返回用户所有个人信息
 请求参数：
   	名称 	类型 	必填 	说明
   	uid     INT     YES
@@ -355,3 +355,17 @@
     sex                          性别
     xing                         星座
     birthday                     生日
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 
+
+接口名称：星座APP用户添加多个照片
+接口地址：http://star.allappropriate.com/addpics
+支持格式：JSON
+请求方式：HTTP POST
+请求示例：http://star.allappropriate.com/addpics
+接口备注：返回Invalid file 上传错误  返回Success 上传成功 
+请求参数：
+	名称 	类型 	必填 	说明
+    uid                     用户UID(必填)
+    uploadN                 上传文件个数(必填)
