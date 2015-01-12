@@ -303,7 +303,7 @@
 接口地址：http://star.allappropriate.com/addcount
 支持格式：JSON
 请求方式：HTTP POST
-请求示例：http://star.allappropriate.com/addcount?cid=3&zcount=102&uid=2696868409
+请求示例：http://star.allappropriate.com/addcount?cid=3&zcount=1&uid=2696868409
 接口备注：返回点赞数
 请求参数：
   	名称 	类型 	必填 	说明

@@ -31,7 +31,8 @@ $ucomment = $_GET['comment'];
 
 $comments = getcomment($cid)."".$nickname.':'.$ucomment."#";
 
-//echo $comments;
+
+echo $comments;
 
 addcomment($cid,$comments,$uid,$ucomment);
 
@@ -90,6 +91,7 @@ if (!$con)
 
 
 mysql_select_db("star_app", $con);
+
 
 $sql1 = "UPDATE `frcontent` SET `comments` = '$comments' WHERE `frcontent`.`cid` ='$cid'";
 
