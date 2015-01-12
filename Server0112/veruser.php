@@ -29,7 +29,7 @@ if (!$con)
 
   {
 
-  mysql_select_db("star_app", $con);
+  mysql_select_db("star_app", $con); 
   
   $sql = "SELECT * FROM userinfo where username='".$username."'";
   
