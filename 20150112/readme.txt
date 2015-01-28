@@ -207,6 +207,7 @@
         phrase
         xing
         birthday      
+        password
 
         
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 	   
@@ -330,20 +331,20 @@
 接口地址：http://star.allappropriate.com/veruser
 支持格式：JSON
 请求方式：HTTP GET
-请求示例：http://star.allappropriate.com/veruser?mobilenum=13988888888
+请求示例：http://star.allappropriate.com/veruser?mobilenum=13988888888&password=123
 接口备注：返回UID
 请求参数：
   	名称 	类型 	必填 	说明
     mobilenum                    用户注册手机号
- 
+    password
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 
 
 接口名称：星座APP注册用户接口
 接口地址：http://star.allappropriate.com/userregistered
 支持格式：JSON
-请求方式：HTTP GET
-请求示例：http://star.allappropriate.com/userregistered?mobilenum=13988888888
+请求方式：HTTP POST
+请求示例：http://star.allappropriate.com/userregistered
 接口备注：返回UID
 请求参数：
   	名称 	类型 	必填 	说明
@@ -353,6 +354,7 @@
     sex                          性别
     xing                         星座
     birthday                     生日
+    password                     密码
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 

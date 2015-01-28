@@ -2,6 +2,13 @@
 
 if (empty($_POST['uid'])){echo "请上传用户id";exit(0);} 
 
+if (empty($_POST['mobilenum'])){echo "用户手机号为空";exit(0);} 
+
+if (empty($_POST['password'])){echo "用户密码为空";exit(0);} 
+
+
+
+
    $uid = $_POST['uid'];
 //echo $userId;
 
@@ -9,7 +16,9 @@ if (empty($_POST['uid'])){echo "请上传用户id";exit(0);}
   $nickname = $_POST['nickname'];
   $phrase = $_POST['phrase'];
   $xing = $_POST['xing'];
+  $sex = $_POST['sex'];
   $userAge = $_POST['birthday'];
+  $pwd = $_POST['password'];
   
   //$userId =getRandStr($length=10);
   
@@ -32,7 +41,7 @@ mysql_select_db("star_app");
 //$sql = "insert into userinfo (uid,username,nickname,phrase,xing,photo,userage)  values('$userId','$username','$nickname','$phrase','$xing','$photo','$userAge')";
 
 
-$sql = "UPDATE `userinfo` SET `username` = '$username',`nickname` = '$nickname', `phrase` = '$phrase',`xing` = '$xing',  `userage` = '$userAge' WHERE `userinfo`.`uid` = '$uid'";
+$sql = "UPDATE `userinfo` SET `username` = '$username',`password` = '$pwd',`nickname` = '$nickname', `phrase` = '$phrase',`xing` = '$xing', `sex` = '$sex', `userage` = '$userAge' WHERE `userinfo`.`uid` = '$uid'";
 
 
  if (!mysql_query($sql,$con))
@@ -43,7 +52,7 @@ $sql = "UPDATE `userinfo` SET `username` = '$username',`nickname` = '$nickname',
 
  }
 
- echo "修改一条记录";
+ echo $uid;
 
   //关闭连接
 

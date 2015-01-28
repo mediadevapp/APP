@@ -1,15 +1,12 @@
 <?php
 
-
-if (empty($_GET['uid'])){
-echo "没有输入用户ID";
+if (empty($_GET['eid'])){
+echo "没有输入活动id";
 exit(0);
 } 
-$s_uid =  $_GET['uid'];
 
-//echo "星座名： ".$s_name." "; 
-
-
+$eid = $_GET['eid'];
+geteventdetails($eid);
 
 /**************************************************************
  *
@@ -71,20 +68,11 @@ $array = array
 
 echo JSON($array);
  *************************************************************/
- 
-/**************************************************************
-生日计算年龄方法 
-$birth='1985.6.23';
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-echo "生日:$birth\n";
-echo "年龄:$age\n";
- *************************************************************/
 
 
+function geteventdetails($eid){
+	
+	
 $con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
 
 if (!$con)
@@ -99,57 +87,114 @@ if (!$con)
 
   {
 
-  mysql_select_db("star_app", $con);
+  mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM userinfo where uid='".$s_uid."'";
+  $sql = "SELECT * FROM  `eventsinfo` WHERE  `eventsid` =  '$eid' ORDER BY  `endtime` ASC ";
   
   //echo($sql);
 
-  $result = mysql_query( $sql);
-
-
-
-  while($row = mysql_fetch_array($result))
+  $result = mysql_query($sql);
+  
+  $json=array();
+  $arr=array();
+   
+ while($row = mysql_fetch_array($result))
 
   {
 
-  //echo $row['id'] . " " . $row['name'];
-$birth= $row['userage'];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-  
-  
-  $array = array
-       (
-          'id'=>$row['uid'],
-          'username'=> $row['username'],
-          'nickname'=> $row['nickname'],
-          'sex'=> $row['sex'],
-          'phrase'=> $row['phrase'],
-          'photo'=> $row['photo'],
-          'birthday'=> $row['userage'],
-          'fans'=> $row['fans'],
-          'follow'=> $row['Follow'],
-          'friend'=> $row['Friend'],
-          'xing'=> $row['xing'],
-          'userage'=> $age,
-          'pics'=>$row['pics']
-          
-          
-       );
-  
-  
-  echo JSON($array);
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["uid"]=$row["userid"];
+   $arr["username"]=$row["username"];
+   $arr["mobile"]=$row["mobile"];
+   $arr["mobile2"]=$row["mobile2"];
+   $arr["title"]=$row["title"];
+   $arr["content"]=$row["content"];
+   $arr["starttime"]=$row["startime"];
+   $arr["endtime"]=$row["endtime"];
+   $arr["pics"]=$row["pic"];
+   $arr["templateid"]=$row["templateid"];
+   $arr["locations"]=$row["locations"];
+   $arr["joineusers"] = getuser($eid);
+   $arr["status"] = $row["status"];
+   $arr["lng"] = $row["longitude"];
+   $arr["lat"] = $row["latitude"];
 
+   
+   $json[]=$arr; 
+   
+  }
   
-   }
+  echo JSON($json); 
+ 
+
+  }
+
+//mysql_close($con);
+
+}
+
+
+
+function getuser($eid){
+	
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("supercard", $con);
+  
+  $sql = "SELECT * FROM  `joinuser` WHERE  `eventsid` ='$eid'";
+  
+  //echo($sql);
+
+  $result = mysql_query($sql);
+  
+  //$json=array();
+  
+  $arr=array();
+   
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   //$arr["uid"]=$row["uid"];
+   
+
+   $arr["username&mobile"]=$row["username"]."&".$row["mobilenum"]."#";
+  
+
+   $s2 .= implode(',',$arr);
+
+   
+   
+   //$json[]=$arr; 
+   
+  }
+  
+  //echo JSON($json); 
+  
+      
+   return $s2;
+  
+  
 
   }
 
 mysql_close($con);
+
+}
+
 
 
 

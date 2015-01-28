@@ -1,15 +1,13 @@
 <?php
 
-
 if (empty($_GET['uid'])){
-echo "没有输入用户ID";
+echo "没有输入uid";
 exit(0);
 } 
-$s_uid =  $_GET['uid'];
 
-//echo "星座名： ".$s_name." "; 
+$uid = $_GET['uid'];
 
-
+getevents($uid);
 
 /**************************************************************
  *
@@ -71,20 +69,11 @@ $array = array
 
 echo JSON($array);
  *************************************************************/
- 
-/**************************************************************
-生日计算年龄方法 
-$birth='1985.6.23';
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-echo "生日:$birth\n";
-echo "年龄:$age\n";
- *************************************************************/
 
 
+function getevents($uid){
+	
+	
 $con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
 
 if (!$con)
@@ -99,57 +88,51 @@ if (!$con)
 
   {
 
-  mysql_select_db("star_app", $con);
+  mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM userinfo where uid='".$s_uid."'";
+  $sql = "SELECT * FROM  `eventsinfo` WHERE  `userid` =  '$uid' ORDER BY  `endtime` ASC ";
   
   //echo($sql);
 
-  $result = mysql_query( $sql);
-
-
-
-  while($row = mysql_fetch_array($result))
+  $result = mysql_query($sql);
+  
+  $json=array();
+  $arr=array();
+   
+ while($row = mysql_fetch_array($result))
 
   {
 
-  //echo $row['id'] . " " . $row['name'];
-$birth= $row['userage'];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["uid"]=$row["userid"];
+   $arr["status"]=$row["status"]; 
+   $arr["username"]=$row["username"];
+   $arr["title"]=$row["title"];
+   $arr["content"]=$row["content"];
+   $arr["mobile"]=$row["mobile"];
+   $arr["starttime"]=$row["startime"];
+   $arr["endtime"]=$row["endtime"];
+   $arr["pics"]=$row["pic"];
+   $arr["locations"]=$row["locations"];
+   $arr["templateid"]=$row["templateid"];
+   $arr["Number of people"]= $row["ucount"];;
+   
+   
+   
+   
+   $json[]=$arr; 
+   
+  }
   
-  
-  $array = array
-       (
-          'id'=>$row['uid'],
-          'username'=> $row['username'],
-          'nickname'=> $row['nickname'],
-          'sex'=> $row['sex'],
-          'phrase'=> $row['phrase'],
-          'photo'=> $row['photo'],
-          'birthday'=> $row['userage'],
-          'fans'=> $row['fans'],
-          'follow'=> $row['Follow'],
-          'friend'=> $row['Friend'],
-          'xing'=> $row['xing'],
-          'userage'=> $age,
-          'pics'=>$row['pics']
-          
-          
-       );
-  
-  
-  echo JSON($array);
-
-  
-   }
+  echo JSON($json); 
 
   }
 
 mysql_close($con);
+
+}
+
+
 
 
 

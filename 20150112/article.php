@@ -91,6 +91,7 @@ if (!$con)
   {
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["aid"]=$row["id"];
    $arr["title"]=$row["title"];
    $arr["content"]=$row["content"];
    $arr["photo"]=$row["photo"];

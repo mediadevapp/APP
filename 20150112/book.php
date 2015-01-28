@@ -70,6 +70,7 @@ mysql_select_db("star_app", $con);
 $sql = "SELECT * FROM bookinfo where id='".$s_name."'";
 //echo($sql);
 $result = mysql_query( $sql);
+
 while($row = mysql_fetch_array($result))
 {
 //echo $row['id'] . " " . $row['name'];

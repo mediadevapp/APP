@@ -16,6 +16,8 @@ exit(0);
 //文件上传的个数
 $uploadN = $_POST['uploadN']; 
 
+$pp=getpicspath($uid);
+
 
 
 
@@ -57,7 +59,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
 
       
       uploadpic($uid,$_picpath);
@@ -71,7 +73,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
       
       uploadpic($uid,$_picpath);
       //echo  $_picpath;

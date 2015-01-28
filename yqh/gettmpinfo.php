@@ -1,15 +1,13 @@
 <?php
 
-
-if (empty($_GET['uid'])){
-echo "没有输入用户ID";
+if (empty($_GET['templateid'])){
+echo "没有输入templateid";
 exit(0);
 } 
-$s_uid =  $_GET['uid'];
 
-//echo "星座名： ".$s_name." "; 
+$tmpid = $_GET['templateid'];
 
-
+gettmp($tmpid);
 
 /**************************************************************
  *
@@ -71,20 +69,11 @@ $array = array
 
 echo JSON($array);
  *************************************************************/
- 
-/**************************************************************
-生日计算年龄方法 
-$birth='1985.6.23';
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-echo "生日:$birth\n";
-echo "年龄:$age\n";
- *************************************************************/
 
 
+function gettmp($tmpid){
+	
+	
 $con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
 
 if (!$con)
@@ -99,58 +88,40 @@ if (!$con)
 
   {
 
-  mysql_select_db("star_app", $con);
+  mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM userinfo where uid='".$s_uid."'";
+  $sql = "SELECT * FROM  `templateinfo` WHERE  `templateid` ='$tmpid' ";
   
   //echo($sql);
 
-  $result = mysql_query( $sql);
-
-
-
-  while($row = mysql_fetch_array($result))
+  $result = mysql_query($sql);
+  
+  $json=array();
+  $arr=array();
+   
+ while($row = mysql_fetch_array($result))
 
   {
 
-  //echo $row['id'] . " " . $row['name'];
-$birth= $row['userage'];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-  
-  
-  $array = array
-       (
-          'id'=>$row['uid'],
-          'username'=> $row['username'],
-          'nickname'=> $row['nickname'],
-          'sex'=> $row['sex'],
-          'phrase'=> $row['phrase'],
-          'photo'=> $row['photo'],
-          'birthday'=> $row['userage'],
-          'fans'=> $row['fans'],
-          'follow'=> $row['Follow'],
-          'friend'=> $row['Friend'],
-          'xing'=> $row['xing'],
-          'userage'=> $age,
-          'pics'=>$row['pics']
-          
-          
-       );
-  
-  
-  echo JSON($array);
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["templateid"]=$row["templateid"];
+   $arr["templatename"]=$row["templatename"];
+   $arr["smallpic"]=$row["pics"];
+   $arr["bigpic"]=$row["picb"];
+   $arr["movie"]=$row["movie"];
 
+   
+   
+   $json[]=$arr; 
+   
+  }
   
-   }
+  echo JSON($json); 
 
   }
 
 mysql_close($con);
 
-
+}
 
 ?>

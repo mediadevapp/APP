@@ -53,6 +53,9 @@ if ((($_FILES["file"]["type"] == "image/gif")
       }
     else
       {
+      
+      $_FILES["file"]["name"] = date("Y-m-d") . rand() . ".png";
+      
       move_uploaded_file($_FILES["file"]["tmp_name"],
       
       "upload/" . $_FILES["file"]["name"]);

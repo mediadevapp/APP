@@ -20,18 +20,34 @@ exit(0);
 $cid=$_GET['cid'];
 $count=$_GET['zcount'];
 
+$uid = $_GET['uid'];
+
 //echo $count;
 
 $zcount = (int)$count;
-
 $ccount = getcount($cid) + 1;
 
-echo $ccount;
+$zed = getzanuser($uid,$cid);
 
 
+
+if($zed == 1){
+	
+echo "您已经赞过了";
+	
+}else{
+
+ $uuid = $uid."#".getzanuser($uid,$cid);
+	
+ addcount($ccount,$cid,$uuid);
+	
+}
+
+//echo $ccount."#";
+//echo getzanuser($uid,$cid)."";
 
 //朋友圈内容字段更新
-addcount($ccount,$cid,$uid);
+//addcount($ccount,$cid,$uuid);
 
 
 
@@ -49,6 +65,8 @@ if (!$con)
 mysql_select_db("star_app", $con);
 
 $sql1 = "UPDATE  `frcontent` SET  `zcount` =  '$count', `zanuser` =  '$uid'  WHERE  `frcontent`.`cid` = '$cid' ";
+
+//echo $sql1;
 
  
  if (!mysql_query($sql1,$con))
@@ -103,6 +121,59 @@ mysql_close($con);
 
 }
 
+
+function getzanuser($uid,$cid){
+
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+if (!$con)
+{
+die('数据库连接失败: ' . mysql_error());
+}
+else
+{
+mysql_select_db("star_app", $con);
+
+$sql = "SELECT * FROM  `frcontent` WHERE cid =  '$cid'";
+
+//echo($sql);
+
+$result = mysql_query( $sql);
+
+
+
+while($row = mysql_fetch_array($result))
+{
+//echo $row['id'] . " " . $row['name'];
+
+
+    $zuser = $row['zanuser'];
+
+}
+
+
+  $user = explode('#',$zuser); 
+  
+if (in_array($uid, $user)) {
+    
+    return "1";
+    
+}else{
+	
+	 return $zuser;
+}  
+
+
+
+
+
+}
+mysql_close($con);
+
+	
+	
+	
+}
 
 
 ?>

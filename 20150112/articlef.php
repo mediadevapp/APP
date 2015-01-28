@@ -39,7 +39,6 @@ if (!$con)
    
    $coutent = $row['content'];
    $photo = $row['photo'];
-
    
   }
   
