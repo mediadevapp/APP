@@ -3,7 +3,10 @@
 if (empty($_POST['templateid'])){
 echo "没有输入模版ID";
 exit(0);
-} 
+}
+
+
+
 
 if (empty($_POST['username'])){
 echo "没有输入用户名称";
@@ -60,6 +63,13 @@ exit(0);
   $eventid =getRandStr($length=10);
   
   $templateid = $_POST['templateid'];
+  
+  preg_match('/^\d+$/i', $templateid) or die('模版参数必须是数字1-20');
+  
+
+
+
+  
   
   $startime = $_POST['startime'];
   $endtime = $_POST['endtime'];
@@ -122,6 +132,56 @@ $sql = "insert into eventsinfo (eventsid,userid,username,username2,title,content
  mysql_close($con);
  
 }
+
+
+
+function gettmpinfo($tmpid){
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("supercard", $con);
+  
+  $sql = "SELECT * FROM  `templateinfo` WHERE  `templateid` =  '$tmpid' ";
+  
+  echo($sql);
+
+  $result = mysql_query($sql);
+  
+
+   
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   
+   $templateid = $row["templateid"];
+   $templatename = $row["templatename"];
+
+}
+
+
+return $templatename;
+
+
+}
+
+mysql_close($con);
+	
+}
+
 
 
 

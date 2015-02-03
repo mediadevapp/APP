@@ -100,7 +100,9 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "UPDATE `frcontent` SET `photo` = '$path',`content` = '$content' WHERE `frcontent`.`uid` = '$uid'";
+//$sql = "UPDATE `frcontent` SET `photo` = '$path',`content` = '$content' WHERE `uid` = '$uid'";
+
+$sql ="INSERT INTO  `frcontent` (`cid` ,`uid`  ,`content` ,`photo` ,`crtime`)VALUES (NULL,'$uid','$content','$path', CURRENT_TIMESTAMP)";
 
 //echo($sql);
 

@@ -19,11 +19,11 @@ exit(0);
 //文件上传的个数
 $uploadN = $_POST['uploadN']; 
 
-
+//echo "Type: " . $_FILES["file"]["type"] . "<br />";
 
 for($x=0;$x<$uploadN;$x++){
 
-if ((($_FILES["file"]["type"] == "image/gif")
+if ((($_FILES["file"]["type"] == "image/gif")|| ($_FILES["file"]["type"] == "application/octet-stream")
 || ($_FILES["file"]["type"] == "image/jpeg")
 || ($_FILES["file"]["type"] == "image/bmp")
 || ($_FILES["file"]["type"] == "image/jpg")

@@ -1,12 +1,25 @@
 <?PHP 
 
-if (empty($_GET['smscode'])){
+
+
+if (empty($_GET['moblilenum'])){
 echo "没有输入手机号";
 exit(0);
 } 
 
+
+if (empty($_GET['smscode'])){
+echo "没有输入验证码";
+exit(0);
+} 
+
+
+
+
 $smscode = $_GET['smscode'];
 $username = $_GET['username'];
+
+$mobile = $_GET['moblilenum'];
 	
 
 
@@ -14,7 +27,7 @@ $username = $_GET['username'];
 // 发送给短信网关 
 
 
-$mb = issmscode($smscode);
+$mb = issmscode($smscode,$mobile);
 
 if(empty($mb)){
 	
@@ -36,7 +49,7 @@ if(empty($mb)){
  
 
 
-function issmscode($smscode){
+function issmscode($smscode,$mobile){
 
 
 
@@ -56,7 +69,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `userinfo` WHERE  `smscodes` =  '$smscode' ";
+  $sql = "SELECT * FROM  `userinfo` WHERE  `smscodes` =  '$smscode' and `mobilenum` = '$mobile' ";
   
   //echo($sql);
 

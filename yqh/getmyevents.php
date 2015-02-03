@@ -105,6 +105,7 @@ if (!$con)
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
    $arr["uid"]=$row["userid"];
+   $arr["eid"]=$row["eventsid"];
    $arr["status"]=$row["status"]; 
    $arr["username"]=$row["username"];
    $arr["title"]=$row["title"];

@@ -1,7 +1,7 @@
 =============================================================
 
 <br>
-<form action="addpics.php" method="post" enctype="multipart/form-data">
+<form action="addpiccontent.php" method="post" enctype="multipart/form-data">
 
 <input type="text" name="uid" value="6283429397"/><br>
 <input type="text" name="nickname" value="AngleBaby"/><br>

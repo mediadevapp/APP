@@ -98,7 +98,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT userid,status,username,title,content,mobile,startime,endtime, datediff(startime,NOW()) as dayFactor,TIMESTAMPDIFF(hour,NOW(),startime)as hourFactor  FROM  `eventsinfo` WHERE  `userid` =  '$uid'  ";
+  $sql = "SELECT userid,status,username,title,content,mobile,startime,endtime, datediff(startime,NOW()) as dayFactor,TIMESTAMPDIFF(hour,NOW(),startime)as hourFactor,locations  FROM  `eventsinfo` WHERE  `userid` =  '$uid'  ";
   
   //echo($sql);
 
@@ -120,6 +120,7 @@ if (!$con)
    $arr["mobile"]=$row["mobile"];
    $arr["starttime"]=$row["startime"];
    $arr["endtime"]=$row["endtime"];
+   $arr["locations"]=$row["locations"];
 
    $arr["daydiff"]= $row["dayFactor"];
    $arr["hourdiff"]= $row["hourFactor"];

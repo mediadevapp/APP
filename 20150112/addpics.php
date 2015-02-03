@@ -13,18 +13,22 @@ if (empty($_POST['uploadN'])){
 echo "请上传t图片个数";
 exit(0);
 } 
-//文件上传的个数
+
+
+
+
+//文件上传的个数 application/octet-stream
 $uploadN = $_POST['uploadN']; 
 
 $pp=getpicspath($uid);
 
-
+//echo "Type: " . $_FILES["file"]["type"] . "<br />";
 
 
 for($x=0;$x<$uploadN;$x++){
 
 if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
+|| ($_FILES["file"]["type"] == "image/jpeg")|| ($_FILES["file"]["type"] == "application/octet-stream")
 || ($_FILES["file"]["type"] == "image/bmp")
 || ($_FILES["file"]["type"] == "image/jpg")
 || ($_FILES["file"]["type"] == "image/png")
@@ -59,7 +63,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
 
       
       uploadpic($uid,$_picpath);
@@ -73,10 +77,11 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
       
       uploadpic($uid,$_picpath);
-      //echo  $_picpath;
+      
+      echo  $_picpath;
       
       }
     }

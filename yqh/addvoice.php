@@ -19,14 +19,11 @@ exit(0);
 //文件上传的个数
 $uploadN = $_POST['uploadN']; 
 
-
+//echo "Type: " . $_FILES["file"]["type"] . "<br />";
 
 for($x=0;$x<$uploadN;$x++){
 
-if ((($_FILES["file"]["type"] == "audio/amr")
-|| ($_FILES["file"]["type"] == "audio/x-m4a"))
-&& ($_FILES["file"]["size"] < 50000000))
-  {
+if ((($_FILES["file"]["type"] == "audio/amr")|| ($_FILES["file"]["type"] == "audio/aac")||($_FILES["file"]["type"] == "audio/vnd.dlna.adts")||($_FILES["file"]["type"] == "application/octet-stream")|| ($_FILES["file"]["type"] == "audio/x-m4a"))&& ($_FILES["file"]["size"] < 50000000)){
   if ($_FILES["file"]["error"] > 0)
     {
     echo "Return Code: " . $_FILES["file"]["error"] . "";
@@ -35,6 +32,10 @@ if ((($_FILES["file"]["type"] == "audio/amr")
  
   else
     {
+    
+    
+    
+    
     //echo "Upload: " . $_FILES["file"]["name"] . "<br />";
     //echo "Type: " . $_FILES["file"]["type"] . "<br />";
     //echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
@@ -59,7 +60,7 @@ if ((($_FILES["file"]["type"] == "audio/amr")
       
       $_voicepath .= "http://card.allappropriate.com/" .$vname."#".$op;  
 
-   
+      
       uploadvoice($eid,$_voicepath);
       
      }
@@ -92,6 +93,7 @@ if ((($_FILES["file"]["type"] == "audio/amr")
 else
   {
   echo "Invalid file";
+  
   }
   
 }
@@ -117,7 +119,7 @@ mysql_select_db("supercard");
 
 $sql = "UPDATE `eventsinfo` SET `voice1` = '$path' WHERE  `eventsid` = '$eid'";
 
-//echo($sql);
+echo($sql);
 
  if (!mysql_query($sql,$con))
 
@@ -127,7 +129,7 @@ $sql = "UPDATE `eventsinfo` SET `voice1` = '$path' WHERE  `eventsid` = '$eid'";
 
  }
 
- echo "Success";
+ echo "eid=".$eid."path=".$path;
 
   //关闭连接
 
