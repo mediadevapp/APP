@@ -6,6 +6,14 @@ exit(0);
 } 
 
 
+
+if (empty($_POST['nickname'])){
+echo "请输入nickname";
+exit(0);
+} 
+
+
+
 if (empty($_POST['content'])){
 echo "请输入内容";
 exit(0);
@@ -13,15 +21,11 @@ exit(0);
 
 
 $uid = $_POST['uid'];
-$content = $_POST['content']; 
+$content = $_POST['content'];
+$nickename = $_POST['nickname'];
 
 
-if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
-|| ($_FILES["file"]["type"] == "image/bmp")
-|| ($_FILES["file"]["type"] == "image/jpg")
-|| ($_FILES["file"]["type"] == "image/png")
-|| ($_FILES["file"]["type"] == "image/pjpeg"))
+if ((($_FILES["file"]["type"] == "image/gif")|| ($_FILES["file"]["type"] == "image/jpeg")||($_FILES["file"]["type"] == "application/octet-stream")|| ($_FILES["file"]["type"] == "image/bmp")|| ($_FILES["file"]["type"] == "image/jpg")|| ($_FILES["file"]["type"] == "image/png")|| ($_FILES["file"]["type"] == "image/pjpeg"))
 && ($_FILES["file"]["size"] < 50000000))
   {
   if ($_FILES["file"]["error"] > 0)
@@ -102,7 +106,7 @@ mysql_select_db("star_app");
 
 //$sql = "UPDATE `frcontent` SET `photo` = '$path',`content` = '$content' WHERE `uid` = '$uid'";
 
-$sql ="INSERT INTO  `frcontent` (`cid` ,`uid`  ,`content` ,`photo` ,`crtime`)VALUES (NULL,'$uid','$content','$path', CURRENT_TIMESTAMP)";
+$sql ="INSERT INTO  `frcontent` (`cid` ,`uid`,`nickname`,`content` ,`photo` ,`crtime`)VALUES (NULL,'$uid','$nickename','$content','$path', CURRENT_TIMESTAMP)";
 
 //echo($sql);
 

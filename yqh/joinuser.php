@@ -48,6 +48,7 @@ if(empty($mb)){
    //echo "未报名用户";
    
    adduser($uid,$mobilenum,$username,$eid,$econtent);
+   
    addusertmp($uid,$mobilenum,$username,$eid,$econtent);
    
    $ncount = getcount($eid)+1;

@@ -28,12 +28,7 @@ $pp=getpicspath($uid);
 for($x=0;$x<$uploadN;$x++){
 
 if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")|| ($_FILES["file"]["type"] == "application/octet-stream")
-|| ($_FILES["file"]["type"] == "image/bmp")
-|| ($_FILES["file"]["type"] == "image/jpg")
-|| ($_FILES["file"]["type"] == "image/png")
-|| ($_FILES["file"]["type"] == "image/pjpeg"))
-&& ($_FILES["file"]["size"] < 50000000))
+|| ($_FILES["file"]["type"] == "image/jpeg")|| ($_FILES["file"]["type"] == "application/octet-stream")|| ($_FILES["file"]["type"] == "image/bmp")|| ($_FILES["file"]["type"] == "image/jpg")|| ($_FILES["file"]["type"] == "image/png")|| ($_FILES["file"]["type"] == "image/pjpeg"))&& ($_FILES["file"]["size"] < 50000000))
   {
   if ($_FILES["file"]["error"] > 0)
     {
@@ -63,21 +58,25 @@ if ((($_FILES["file"]["type"] == "image/gif")
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
 
       
       uploadpic($uid,$_picpath);
+      
+      echo  $_picpath;
       
    
       }
     else
       {
+      
+  
       move_uploaded_file($_FILES["file"]["tmp_name"],
       
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
+      $_picpath .= "http://star.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$pp;  
       
       uploadpic($uid,$_picpath);
       

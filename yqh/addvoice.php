@@ -21,9 +21,14 @@ $uploadN = $_POST['uploadN'];
 
 //echo "Type: " . $_FILES["file"]["type"] . "<br />";
 
+
+
+
+
+
 for($x=0;$x<$uploadN;$x++){
 
-if ((($_FILES["file"]["type"] == "audio/amr")|| ($_FILES["file"]["type"] == "audio/aac")||($_FILES["file"]["type"] == "audio/vnd.dlna.adts")||($_FILES["file"]["type"] == "application/octet-stream")|| ($_FILES["file"]["type"] == "audio/x-m4a"))&& ($_FILES["file"]["size"] < 50000000)){
+if ((($_FILES["file"]["type"] == "audio/amr")|| ($_FILES["file"]["type"] == "audio/aac")||($_FILES["file"]["type"] == "audio/vnd.dlna.adts")||($_FILES["file"]["type"] == "audio/x-wav")||($_FILES["file"]["type"] == "application/octet-stream")|| ($_FILES["file"]["type"] == "audio/x-m4a"))&& ($_FILES["file"]["size"] < 50000000)){
   if ($_FILES["file"]["error"] > 0)
     {
     echo "Return Code: " . $_FILES["file"]["error"] . "";
@@ -191,7 +196,7 @@ mysql_close($con);
 
 function ffmpeg($filename){
 
-       $vname =  " voice/".date("Y-m-d") . rand() . ".mp3";
+       $vname =  "voice/".date("Y-m-d") . rand() . ".mp3";
       
        $cmd ="ffmpeg -i ".$filename.$vname;
        

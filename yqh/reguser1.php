@@ -5,44 +5,44 @@ echo "没有输入手机号";
 exit(0);
 } 
 
+$mobilenum = $_GET['mobilenum'];
+
 $smscode = getRandStr($length=6);
 
 $uid = getRandStr($length=10);
 
-$mobilenum = $_GET['mobilenum'];
+	
+//echo "".$mb."#";
+echo $smscode."";
+    
+//sendsmscode($smscode,$mobilenum);
+    
+//putsmscode($uid,$mobilenum,$username,$smscode);
 
 
-echo "mobile==".$mobilenum;
+
+//echo "".$mobilenum;
 
 
 
-
-
-// 发送给短信网关 
+//验证是否是第一次注册
 
 $mb = ismobilenum($mobilenum);
 
-
-echo "手机验证>>>".$mb."<<<<";
-
 if(empty($mb)||$mb==""){
 	
-	$username = "new users";
-    
-    echo $smscode."发送codes短信网关";
-    
+	//echo "".$mb."#";
+	//echo $smscode."";
     sendsmscode($smscode,$mobilenum);
-    
-    
+    $username = "new user";
     putsmscode($uid,$mobilenum,$username,$smscode);
-    
-    
+   
+	
 }else{
-	
-	echo "[已注册用户]";
-	
-}
 
+	echo "#".$mb."#";
+
+}
 
 
 
@@ -71,7 +71,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `userinfo` WHERE  `mobilenum` =  '$mobilenum' ";
+  $sql = "SELECT * FROM  `userinfo` WHERE  `mobilenum` =  '$mobilenum' and `smscodes` =  '$smscode' ";
   
   //echo($sql);
 
@@ -123,7 +123,7 @@ $sql = "insert into userinfo (uid,mobilenum,username,smscodes)  values('$uid','$
 
  }
  //echo "Success";
- echo "uid=".$uid;
+ //echo "#".$uid;
   //关闭连接
  mysql_close($con);
 
@@ -153,11 +153,13 @@ function sendsmscode($smscode,$mobilenum){
 	
 $url1="http://sdk999ws.eucp.b2m.cn:8080/sdkproxy/sendsms.action?cdkey=9SDK-EMY-0999-JEQPK&password=256564&phone=".$mobilenum."&message="."【超级邀请函】短信验证码=".$smscode."&addserial=";
 
-echo ">>>>>>>>>>>>";
-echo $url1;
-echo "<<<<<<<<<<<";
+//echo ">>>>>>>>>>>>";
+//echo $url1;
+//echo "<<<<<<<<<<<";
 
 $html = file_get_contents($url1);  
+
+echo "#";
 echo $html;  
 	
 }

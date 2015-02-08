@@ -99,11 +99,15 @@ if (!$con)
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
    $arr["contentid"]=$row["cid"];
-   $arr["uid"]=$row["uid"];
+   $arr["userpic"] = getuserphoto($s_uid);
+
+
+   
    $arr["title"]=$row["title"];
    $arr["content"]=$row["content"];
    $arr["photo"]=$row["photo"];
    $arr["username"]=$row["nickname"];
+   
    $arr["zcount"]=$row["zcount"];
    
    $arr["comment"]=$row["comments"];
@@ -119,6 +123,52 @@ if (!$con)
 
 mysql_close($con);
 
+
+function getuserphoto($s_uid){
+	
+	$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("star_app", $con);
+  
+  $sql = "SELECT *  FROM userinfo WHERE uid  = '".$s_uid."'";
+  
+  //echo($sql);
+
+  $result = mysql_query( $sql);
+
+
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+  
+   $userphoto = $row["photo"];
+
+   
+  }
+  
+   return $userphoto;
+
+  }
+
+mysql_close($con);
+	
+	
+	
+}
 
 
 ?>

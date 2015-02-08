@@ -11,6 +11,7 @@ exit(0);
 if (empty($_GET['password'])){
 
 $s_name =  $_GET['mobilenum'];
+
 veruseru($s_name,"");
 
 
@@ -56,7 +57,7 @@ if (!$con)
   
   $sql = "SELECT * FROM userinfo where  password = '".$s_pwd."' and username='".$username."'";
   
-  echo($sql);
+ //echo($sql);
 
   $result = mysql_query( $sql);
 

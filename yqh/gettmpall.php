@@ -108,10 +108,11 @@ if (!$con)
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
    $arr["templateid"]=$row["templateid"];
-   $arr["templatename"]=$row["templatename"];
+   $arr["templatename"]=$row["cname"];
    $arr["smallpic"]=$row["pics"];
    $arr["bigpic"]=$row["picb"];
    $arr["movie"]=$row["movie"];
+   $arr["name"]=$row["templatename"];
    $arr["templatepath"]=$row["templatepath"];
    
    

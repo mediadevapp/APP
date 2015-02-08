@@ -18,6 +18,19 @@ $tmpid = $_GET['tmpid'];
 
 $tmpname = gettmpinfo($tmpid);
 
+
+
+
+if (empty($tmpname)){
+
+echo "sorry>>";
+
+exit(0);
+
+}
+
+
+
 $eid = $_GET['eid'];
 
 geteventdetails($eid,trim($tmpname));
@@ -212,14 +225,14 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
     <link rel="stylesheet" href="css/tongyong.css" />
     <link rel="stylesheet" href="css/activity.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
     <div class="loadingCls">
         <div class="loading">
@@ -328,7 +341,7 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title></title>
+	<title>超级邀请函</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
@@ -338,7 +351,7 @@ $html=<<<EOT
 		
 
 	</style>
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 	<div class="loadingCls">
 		<div class="loading">
@@ -462,14 +475,14 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
     <link rel="stylesheet" href="css/tongyong.css" />
     <link rel="stylesheet" href="css/eat.css?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
     <div class="loadingCls">
         <div class="loading">
@@ -594,7 +607,7 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
@@ -603,7 +616,7 @@ $html=<<<EOT
     <style>
 	
     </style>
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 <div class="loadingCls">
     <div class="loading">
@@ -725,13 +738,13 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
     <link rel="stylesheet" href="css/tongyong.css" />
     <link rel="stylesheet" href="css/party.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
     <div class="loadingCls">
         <div class="loading">
@@ -841,7 +854,7 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title></title>
+	<title>超级邀请函</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
@@ -851,7 +864,7 @@ $html=<<<EOT
 		
 
 	</style>
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 	<div class="loadingCls">
 		<div class="loading">
@@ -966,14 +979,14 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
 	<link rel="stylesheet" href="css/hunli1.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 <div class="loadingCls">
     <div class="loading">
@@ -1082,7 +1095,7 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title></title>
+	<title>超级邀请函</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css?v=3" />
@@ -1091,7 +1104,7 @@ $html=<<<EOT
 	<style>
 		
 	</style>
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 	<div class="loadingCls">
 		<div class="loading">
@@ -1225,7 +1238,7 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
@@ -1234,7 +1247,7 @@ $html=<<<EOT
     <style>
 		
     </style>
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 <div class="loadingCls">
     <div class="loading">
@@ -1354,13 +1367,13 @@ $html=<<<EOT
 <html class="ks-webkit533 ks-webkit">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>超级邀请函</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/mobi.css" />
 	<link rel="stylesheet" href="css/tongyong.css" />
 	<link rel="stylesheet" href="css/huiyi2.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-</head>
+</head><meta name="author" content="超级邀请函"> <meta name="Copyright" content="超级邀请函">
 <body cz-shortcut-listen="true" title="" icon="" link="" desc="">
 <div class="loadingCls">
     <div class="loading">
@@ -1466,12 +1479,585 @@ echo "http://card.allappropriate.com/h5/".$templatename;
 
 
 
+if (trim($tmpname) == trim("movie")){
+
+$html=<<<EOT
+
+<!DOCTYPE html>
+<html class="ks-webkit533 ks-webkit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>超级邀请函</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mobi.css" />
+    <link rel="stylesheet" href="css/tongyong.css" />
+    <link rel="stylesheet" href="css/movie.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <style>
 
 
-	
-	
-	
-	
+    </style>
+</head>
+<body cz-shortcut-listen="true" title="" icon="" link="" desc="">
+    <div class="loadingCls">
+        <div class="loading">
+            <img src="img/loading.gif" width="15%">
+        </div>
+        <div class="loadingText" style="color:#000;">
+            <p>Loading...</p><p> </p>
+        </div>
+    </div>
+    <div class="swiper-container" style="position: relative;width:100%;height:100%;overflow: hidden;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page layer1">
+                <div class="layer layer1-9"></div>
+                <div class='layer pageContainer' id='container1'>
+                    <div class="layer layer1-10"></div>
+                    <div class="layer layer1-11"></div>
+                    <div class="layer layer1-12"></div>
+                    <div class="layer layer1-13 flush2"></div>
+                    <div class="layer layer1-14"></div>
+                    <div class="layer layer1-15"></div>
+                    <div class="layer layer1-16"></div>
+                </div>
+                <div class="dialog"></div>
+                <div class="layer layer1-b">
+                    <div class='layer pageContainer' id='container1'>
+                        <div class="layer layer1-2"></div>
+                        <div class="layer layer1-3"></div>
+                        <div class="layer layer1-4"></div>
+                        <div class="layer layer1-5"></div>
+						<p class="text1-7 text1">《黑衣人XIX》</p>
+                        <div class="layer layer1-6"></div>
+                        <div class="layer layer1-7"></div>
+                        <div class="layer layer1-8"></div>
+						<div class="layer layer1-17 button flush"></div>
+                        <p class="text1-7 text8">报名人数：<span style="font-size:18px;">20</span></p>
+                        <p class="text1-7 text2">主题：看电影吧</p>
+                        <p class="text1-7 text3">时间：$startime </p>
+                        <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
+                        <p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
+                          <img src="img/movie/1-1.png" style="width:6.66%;height:80%;"/></a>
+                          地址：$location</p>
+                          <p class="text1-7 text6">联系人：$username </p>
+                          <p class="text1-7 text7">联系方式：$mobile</p>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+      <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="js/idangerous.swiper/idangerous.swiper-2.6.1.min.js"></script>
+      <link rel="stylesheet" href="js/idangerous.swiper/idangerous.swiper.css" />
+      <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+      <script type="text/javascript" src="js/touch-0.2.13.min.js"></script>
+      <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
+      <script type="text/javascript" src="js/preload.js"></script>
+      <script type="text/javascript" src="js/response.js"></script>
+      <script>
+
+
+      </script>
+
+      <div class="music1">
+        <img src="img/music1_play.png" style="width: 100%">
+        <audio id="video1" autoplay="false" loop style="display:none;">
+            <source src="$music" id="video_url_mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="music2">
+            <img src="img/music2_stop.png" style="width: 100%">
+            <audio id="video2" autoplay="false" loop style="display:none;">
+                <source src="$voice" id="video_url_mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+
+
+            <script type="text/javascript" src="js/tongyong.js"></script>
+            <script type="text/javascript" src="js/movie.js"></script>
+        </body>
+        </html>
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
 }
+
+
+
+
+if (trim($tmpname) == trim("travel")){
+
+$html=<<<EOT
+
+<!DOCTYPE html>
+<html class="ks-webkit533 ks-webkit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>超级邀请函</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mobi.css" />
+	<link rel="stylesheet" href="css/tongyong.css" />
+	<link rel="stylesheet" href="css/lvxing.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <style>
+		
+    </style>
+</head>
+<body cz-shortcut-listen="true" title="" icon="" link="" desc="">
+<div class="loadingCls">
+    <div class="loading">
+        <img src="img/loading.gif" width="15%">
+    </div>
+    <div class="loadingText" style="color:#000;">
+        <p>Loading...</p><p> </p>
+    </div>
+</div>
+<div class="swiper-container" style="position: relative;width:100%;height:100%;overflow: hidden;">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide page layer1">
+<div class="layer layer1-8c"></div>
+<div class="layer layer1-1"></div>
+<div class="layer layer1-3"></div>
+<div class="layer layer1-4"></div>
+<div class="layer layer1-5"></div>
+<div class="layer layer1-6"></div>
+<div class="layer layer1-7 button"></div>
+<div class="layer layer1-7s button"></div>
+<div class="dialog"></div>
+<p class="text1-7 text1">报名人数：<span style="font-size:18px;">20</span></p>
+<p class="text1-7 text2">主题：生日快乐</p>
+<p class="text1-7 text3">时间：$startime </p>
+<p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
+<p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
+	  <img src="img/lvxing/1-2.png" style="width:5.66%;height:80%;"/></a>
+	  地址：$location</p>
+<p class="text1-7 text6">联系人：$username </p>
+<p class="text1-7 text7">联系方式：$mobile</p>
+<div class="layer layer1-8"></div>
+<div class="layer layer1-8a"></div>
+<div class="layer layer1-8b"></div>
+<div class="layer layer1-9">
+	<div class="swiper-container images" style="z-index:0;position: relative;width:100%;height:100%;overflow: hidden;">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide ">
+				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
+			</div>
+			<div class="swiper-slide ">
+				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
+			</div>
+			<div class="swiper-slide ">
+				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layer layer1-10"></div>
+<div class="layer layer1-11"></div>
+<div class="layer layer1-12"></div>
+<div class="layer layer1-13"></div>
+<div class="layer layer1-14"></div>
+<div class="layer layer1-15"></div>
+<div class="layer layer1-16"></div>
+<div class="layer layer1-17"></div>
+</div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper/idangerous.swiper-2.6.1.min.js"></script>
+<link rel="stylesheet" href="js/idangerous.swiper/idangerous.swiper.css" />
+<script type="text/javascript" src="js/jquery.transit.min.js"></script>
+<script type="text/javascript" src="js/touch-0.2.13.min.js"></script>
+<script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
+<script type="text/javascript" src="js/preload.js"></script>
+<script type="text/javascript" src="js/response.js"></script>
+<script>
+   
+</script>
+
+<div class="music1">
+<img src="img/music1_play.png" style="width: 100%">
+<audio id="video1" autoplay="false" loop style="display:none;">
+    <source src="$music" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+<div class="music2">
+<img src="img/music2_stop.png" style="width: 100%">
+<audio id="video2" autoplay="false" loop style="display:none;">
+    <source src="$voice" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+
+
+
+<script type="text/javascript" src="js/tongyong.js"></script>
+<script type="text/javascript" src="js/lvxing.js"></script>
+</body>
+</html>
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+if (trim($tmpname) == trim("night")){
+
+$html=<<<EOT
+
+<!DOCTYPE html>
+<html class="ks-webkit533 ks-webkit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>超级邀请函</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mobi.css" />
+	<link rel="stylesheet" href="css/tongyong.css" />
+	<link rel="stylesheet" href="css/yedian.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <style>
+		
+        
+    </style>
+</head>
+<body cz-shortcut-listen="true" title="" icon="" link="" desc="">
+<div class="loadingCls">
+    <div class="loading">
+        <img src="img/loading.gif" width="15%">
+    </div>
+    <div class="loadingText" style="color:#000;">
+        <p>Loading...</p><p> </p>
+    </div>
+</div>
+<div class="swiper-container" style="position: relative;width:100%;height:100%;overflow: hidden;">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide page layer1">
+<div class="layer layer1-1"></div>
+<div class="layer layer1-2"></div>
+<div class="layer layer1-3 button"></div>
+<div class="dialog"></div>
+<p class="text1-7 text1">报名人数<span style="font-size:18px;">20</span></p>
+<p class="text1-7 text2">主题：$title</p>
+<p class="text1-7 text3">时间：$startime </p>
+<p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
+<p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
+	  <img src="img/yedian/1-4.png" style="position:absolute;left:-8%;width:5.66%;height:80%;"/></a>
+	  地址：$location</p>
+<p class="text1-7 text6">联系人：$username </p>
+<p class="text1-7 text7">联系方式：$mobile</p>
+<div class="layer layer1-6"></div>
+<div class="layer layer1-5"></div>
+<div class="layer layer1-7"></div>
+<div class="layer layer1-9"></div>
+<div class="layer layer1-8"></div>
+<div class="layer layer1-10"></div>
+</div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper/idangerous.swiper-2.6.1.min.js"></script>
+<link rel="stylesheet" href="js/idangerous.swiper/idangerous.swiper.css" />
+<script type="text/javascript" src="js/jquery.transit.min.js"></script>
+<script type="text/javascript" src="js/touch-0.2.13.min.js"></script>
+<script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
+<script type="text/javascript" src="js/preload.js"></script>
+<script type="text/javascript" src="js/response.js"></script>
+<script>
+   
+
+</script>
+
+<div class="music1">
+<img src="img/music1_play.png" style="width: 100%">
+<audio id="video1" autoplay="false" loop style="display:none;">
+    <source src="$music" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+<div class="music2">
+<img src="img/music2_stop.png" style="width: 100%">
+<audio id="video2" autoplay="false" loop style="display:none;">
+    <source src="$voice" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+
+
+
+<script type="text/javascript" src="js/tongyong.js"></script>
+<script type="text/javascript" src="js/yedian.js?v=5"></script>
+</body>
+</html>
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+
+
+if (trim($tmpname) == trim("night")){
+
+$html=<<<EOT
+
+
+<!DOCTYPE html>
+<html class="ks-webkit533 ks-webkit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>超级邀请函</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/mobi.css" />
+	<link rel="stylesheet" href="css/tongyong.css" />
+	<link rel="stylesheet" href="css/sports.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <style>
+		
+       
+    </style>
+</head>
+<body cz-shortcut-listen="true" title="" icon="" link="" desc="">
+<div class="loadingCls">
+    <div class="loading">
+        <img src="img/loading.gif" width="15%">
+    </div>
+    <div class="loadingText" style="color:#000;">
+        <p>Loading...</p><p> </p>
+    </div>
+</div>
+<div class="swiper-container" style="position: relative;width:100%;height:100%;overflow: hidden;">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide page layer1">
+<div class="layer layer1-1"></div>
+<div class="layer layer1-2">
+	<div class="swiper-container images" style="z-index:0;position: relative;width:100%;height:100%;overflow: hidden;">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide ">
+				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
+			</div>
+			<div class="swiper-slide ">
+				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
+			</div>
+			<div class="swiper-slide ">
+				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layer layer1-3"></div>
+<div class="layer layer1-4 button"></div>
+<div class="layer layer1-4s button"></div>
+<div class="dialog"></div>
+<p class="text1-7 text1">报名人数<span style="font-size:18px;">20</span></p>
+<p class="text1-7 text2">主题：$title</p>
+<p class="text1-7 text3">时间：$startime </p>
+<p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
+<p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
+	  <img src="img/sports/1-5.png" style="width:8%;height:80%;"/></a>
+	  地址：$location</p>
+<p class="text1-7 text6">联系人：$username </p>
+<p class="text1-7 text7">联系方式：$mobile</p>
+<div class="layer layer1-6"></div>
+<div class="layer layer1-7"></div>
+<div class="layer layer1-7s"></div>
+<div class="layer layer1-8"></div>
+</div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper/idangerous.swiper-2.6.1.min.js"></script>
+<link rel="stylesheet" href="js/idangerous.swiper/idangerous.swiper.css" />
+<script type="text/javascript" src="js/jquery.transit.min.js"></script>
+<script type="text/javascript" src="js/touch-0.2.13.min.js"></script>
+<script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
+<script type="text/javascript" src="js/preload.js"></script>
+<script type="text/javascript" src="js/response.js"></script>
+<script>
+   
+
+</script>
+
+<div class="music1">
+<img src="img/music1_play.png" style="width: 100%">
+<audio id="video1" autoplay="false" loop style="display:none;">
+    <source src="$music" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+<div class="music2">
+<img src="img/music2_stop.png" style="width: 100%">
+<audio id="video2" autoplay="false" loop style="display:none;">
+    <source src="$voice" id="video_url_mp3" type="audio/mpeg">
+</audio>
+</div>
+
+
+
+<script type="text/javascript" src="js/tongyong.js"></script>
+<script type="text/javascript" src="js/sports.js?v=3"></script>
+</body>
+</html>
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+if (trim($tmpname) == trim("birthday01")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+if (trim($tmpname) == trim("birthday02")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+}
+
+
+
+if (trim($tmpname) == trim("business03")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+if (trim($tmpname) == trim("business04")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+if (trim($tmpname) == trim("concert")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+if (trim($tmpname) == trim("ktv")){
+
+$html=<<<EOT
+
+
+
+
+EOT;
+
+
+//$templatename =  $tmpname. ".html";
+$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
+file_put_contents($templatename,$html);
+
+echo "http://card.allappropriate.com/h5/".$templatename;
+ 
+}
+
+
+
+
+
 
 ?>

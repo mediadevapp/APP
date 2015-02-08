@@ -8,15 +8,6 @@ exit(0);
 } 
 
 
-if (empty($_GET['password'])){
-echo "没有输入验证码";
-exit(0);
-} 
-
-
-
-
-$password = $_GET['password'];
 
 $mobile = $_GET['moblilenum'];
 	
@@ -26,7 +17,7 @@ $mobile = $_GET['moblilenum'];
 // 发送给短信网关 
 
 
-$mb = issmscode($password,$mobile);
+$mb = issmscode($mobile);
 
 
 if(empty($mb)){
@@ -47,7 +38,7 @@ if(empty($mb)){
  
 
 
-function issmscode($password,$mobile){
+function issmscode($mobile){
 
 
 
@@ -67,7 +58,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `userinfo` WHERE  `password` =  '$password' and `mobilenum` = '$mobile' ";
+  $sql = "SELECT * FROM  `userinfo` WHERE  `mobilenum` = '$mobile' ";
   
   //echo($sql);
 
@@ -90,11 +81,6 @@ mysql_close($con);
 	
 	
 }
-
-
-
-
-
 
 
 

@@ -44,25 +44,41 @@
 接口地址：http://card.allappropriate.com/veruser
 支持格式：JSON
 请求方式：HTTP GET
-请求示例：http://card.allappropriate.com/veruser?smscode=960871&moblilenum=13011101311,http://card.allappropriate.com/veruser?smscode=960871&username=fff
-接口备注：先验证，成功后更新用户名
+请求示例：http://card.allappropriate.com/veruser?password=960871&moblilenum=13011101311
+接口备注：先验证，手机号和密码
 请求参数：
   	名称 	类型 	必填 	说明
-    smscode
+    password
     moblilenum
-    username
+  
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
-接口名称：邀请函用户注册接口
-接口地址：http://card.allappropriate.com/reguser
+接口名称：邀请函用户注册接口step 1
+接口地址：http://card.allappropriate.com/reguser1
 支持格式：JSON
 请求方式：HTTP GET
-请求示例：http://card.allappropriate.com/reguser?mobilenum=13800000000
+请求示例：http://card.allappropriate.com/reguser1?mobilenum=13800000000
 接口备注：为注册用户返回 uid 和自动发送短信验证码 
 请求参数：
   	名称 	类型 	必填 	说明
     mobilenum
     
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+接口名称：邀请函用户注册接口 step 2
+接口地址：http://card.allappropriate.com/reguser2
+支持格式：JSON
+请求方式：HTTP GET
+请求示例：
+http://card.allappropriate.com/reguser2?mobilenum=13800000000&smscode=xxxxxx;
+http://card.allappropriate.com/reguser2?mobilenum=13800000000&smscode=xxxxxx&password=xxxxxx 
+接口备注：为注册用户返回 uid 和自动发送短信验证码 
+请求参数：
+  	名称 	类型 	必填 	说明
+    mobilenum
+    smscode
+    
+    password       不能为空
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 接口名称：邀请函模版详细信息获取接口

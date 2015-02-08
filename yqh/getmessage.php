@@ -1,13 +1,16 @@
 <?php
 
-if (empty($_GET['eventsid'])){
-echo "没有输入eventsid";
+
+
+
+if (empty($_GET['uid'])){
+echo "没有输入uid";
 exit(0);
 } 
 
-$eid = $_GET['eventsid'];
+$uid = $_GET['uid'];
 
-getmessage($eid);
+getmessage($uid);
 
 /**************************************************************
  *
@@ -71,7 +74,7 @@ echo JSON($array);
  *************************************************************/
 
 
-function getmessage($eid){
+function getmessage($uid){
 	
 $con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
 
@@ -89,7 +92,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `joinusertmp` WHERE  `eventsid` =  '$eid' ORDER BY  `crtime` ASC ";
+  $sql = "SELECT * FROM  `joinusertmp` WHERE   eventsid  in(select  eventsid  from  eventsinfo where `userid`= '$uid' )";
   
   //echo($sql);
 
