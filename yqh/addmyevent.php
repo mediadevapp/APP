@@ -38,7 +38,7 @@ exit(0);
 
 
 
- $photo = "http://card.allappropriate.com/eventspic/demo.jpg";
+ $photo = "";
  
  
 

@@ -9,7 +9,7 @@ exit(0);
 $eid = $_POST['eventsid'];
 //echo  $eid;
 
-$op = getvoicepath($eid);
+
 
 
 if (empty($_POST['uploadN'])){
@@ -54,19 +54,20 @@ if ((($_FILES["file"]["type"] == "audio/amr")|| ($_FILES["file"]["type"] == "aud
     if (file_exists("voice/" . $_FILES["file"]["name"]))
     
       {
-   
-       //move_uploaded_file($_FILES["file"]["tmp_name"],"voice/" . $_FILES["file"]["name"]);
+      
+       $filename = date("Y-m-d").rand().$_FILES["file"]["name"];
+       
+       move_uploaded_file($_FILES["file"]["tmp_name"],"voice/". $filename);
    
       //echo $_FILES["file"]["name"] . " already exists auto rename by the time ";
       
-      $filename=$_FILES["file"]["tmp_name"];
-     
       $vname=ffmpeg($filename);
       
-      $_voicepath .= "http://card.allappropriate.com/" .$vname."#".$op;  
-
+      $_voicepath = "http://card.allappropriate.com/" .$vname."";  
       
       uploadvoice($eid,$_voicepath);
+      
+      echo  $_voicepath."";
       
      }
     
@@ -75,20 +76,20 @@ if ((($_FILES["file"]["type"] == "audio/amr")|| ($_FILES["file"]["type"] == "aud
       
       //$_FILES["file"]["name"] = date("Y-m-d") . rand() . ".mp3";
        
-      //move_uploaded_file($_FILES["file"]["tmp_name"],"voice/" . $_FILES["file"]["name"]);
+      move_uploaded_file($_FILES["file"]["tmp_name"],"voice/" . $_FILES["file"]["name"]);
       
-      $filename=$_FILES["file"]["tmp_name"];
+      $filename= $_FILES["file"]["name"];
      
       $vname=ffmpeg($filename);
       
-      $_voicepath .= "http://card.allappropriate.com/" .$vname."#".$op;  
+      $_voicepath = "http://card.allappropriate.com/" .$vname."";  
 
    
       uploadvoice($eid,$_voicepath);
       
+    
       
-      
-      //echo  $_voicepath;
+      echo  $_voicepath."";
       
  
       
@@ -122,9 +123,14 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("supercard");
 
-$sql = "UPDATE `eventsinfo` SET `voice1` = '$path' WHERE  `eventsid` = '$eid'";
+$sql = "UPDATE `eventsinfo` SET `voice1` = '".$path."' WHERE  `eventsid` = '$eid'";
 
-echo($sql);
+//update set  from xsb name='1231' where sex= '女'
+
+//$sql = "update set  from eventsinfo  `voice1` = '$path'  where  `eventsid` = '$eid'";
+
+//echo $sql;
+
 
  if (!mysql_query($sql,$con))
 
@@ -134,71 +140,23 @@ echo($sql);
 
  }
 
- echo "eid=".$eid."path=".$path;
+ //echo "Success";
 
   //关闭连接
 
  mysql_close($con);
+  //关闭连接
  
 }
 
 
-function getvoicepath($eid){
-
-$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
-
-if (!$con)
-
-  {
-
-  die('数据库连接失败: ' . mysql_error());
-
-  }
-
-  else
-
-  {
-
-  mysql_select_db("supercard", $con);
-  
-  $sql = "SELECT * FROM eventsinfo where eventsid='".$eid."'";
-  
-  //echo($sql);
-
-  $result = mysql_query( $sql);
-
-
-
-  while($row = mysql_fetch_array($result))
-
-  {
-
-  //echo $row['id'] . " " . $row['name'];
-  
-  $voice = $row['voice1'];
-
-  
-   }
-  
-  return $voice ;
-
-  }
-
-mysql_close($con);
-
-
-	
-	
-	
-	
-}
 
 
 function ffmpeg($filename){
 
        $vname =  "voice/".date("Y-m-d") . rand() . ".mp3";
       
-       $cmd ="ffmpeg -i ".$filename.$vname;
+       $cmd ="ffmpeg -i "."voice/".$filename." ".$vname;
        
        //echo $cmd;
       

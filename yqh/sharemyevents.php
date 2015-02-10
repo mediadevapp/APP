@@ -34,15 +34,6 @@ exit(0);
 $eid = $_GET['eid'];
 
 
-$pics = getpicpath($eid);
-
-//echo $pics;
-
-$picsArray = explode("#", $pics);
-
-
-
-$swiperslide = "<div class=swiper-slide><img src='".$picsArray[0]."' style='height:100%;width:100%;'/></div>"."<div class=swiper-slide><img src='".$picsArray[1]."' style='height:100%;width:100%;'/></div>"."<div class=swiper-slide><img src='".$picsArray[2]."' style='height:100%;width:100%;'/></div>"; 
 
 //echo $swiperslide;
 
@@ -174,10 +165,10 @@ $count = getcount($eid);
 //echo $count;
 //echo $tmpname;
 
-Global $swiperslide;
+//Global $swiperslide;
 //echo $swiperslide;  
 	
-crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$swiperslide);
+crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice);
 	
 
 }
@@ -240,7 +231,22 @@ return  $count;
 
 
 
-function crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$swiperslide){
+function crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice){
+
+
+
+$pics = getpicpath($eid);
+$picsArray = explode("#", $pics);
+
+
+foreach($picsArray as $value) {
+	$swiperslide .= "<div class=swiper-slide><img src='".$value."' style='height:100%;width:100%;'/></div>";
+}
+
+
+
+//echo ">>>>".$swiperslide."<<<<";
+
 
 
 
@@ -793,14 +799,15 @@ $html=<<<EOT
             <div class="swiper-slide page layer1">
                 <div class="layer layer1-4">
                  <div class="swiper-container images" style="z-index:0;position: relative;width:100%;height:100%;overflow: hidden;">
+                 
                   <div class="swiper-wrapper">
                   
                   
                    <div class="swiper-slide ">
                     <img src="img/party/1-4.png" style="height:100%;width:100%;"/>
-                </div>
+                  </div>
       
-                $swiperslide
+                  $swiperslide
                 
             </div>
         </div>
