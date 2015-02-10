@@ -34,6 +34,7 @@ if(empty($mb)||$mb==""){
 	//echo "".$mb."#";
 	//echo $smscode."";
     sendsmscode($smscode,$mobilenum);
+    
     $username = "new user";
     putsmscode($uid,$mobilenum,$username,$smscode);
    
@@ -71,7 +72,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `userinfo` WHERE  `mobilenum` =  '$mobilenum' and `smscodes` =  '$smscode' ";
+  $sql = "SELECT * FROM  `userinfo` WHERE  `mobilenum` =  '$mobilenum' ";
   
   //echo($sql);
 

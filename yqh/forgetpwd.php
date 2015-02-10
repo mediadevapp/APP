@@ -2,22 +2,25 @@
 
 
 
-if (empty($_GET['moblilenum'])){
+if (empty($_GET['mobilenum'])){
 echo "没有输入手机号";
 exit(0);
 } 
 
 
 
-$mobile = $_GET['moblilenum'];
-	
+$mobile = $_GET['mobilenum'];
+
+$smscode = getRandStr($length=6);
+
+
 
 
 //echo $smscode."发送codes短信网关";
 // 发送给短信网关 
 
 
-$mb = issmscode($mobile);
+$mb = ismobile($mobile);
 
 
 if(empty($mb)){
@@ -26,7 +29,9 @@ if(empty($mb)){
     
 }else{
     
-  echo $mb."#Success";
+  echo $mb."#Success#".$smscode;
+  sendsmscode($smscode,$mobile);
+  
   
 }
 
@@ -38,7 +43,7 @@ if(empty($mb)){
  
 
 
-function issmscode($mobile){
+function ismobile($mobile){
 
 
 
@@ -82,6 +87,35 @@ mysql_close($con);
 	
 }
 
+
+function sendsmscode($smscode,$mobilenum){
+
+	
+$url1="http://sdk999ws.eucp.b2m.cn:8080/sdkproxy/sendsms.action?cdkey=9SDK-EMY-0999-JEQPK&password=256564&phone=".$mobilenum."&message="."【超级邀请函】密码重置验证码=".$smscode."&addserial=";
+
+//echo ">>>>>>>>>>>>";
+//echo $url1;
+//echo "<<<<<<<<<<<";
+
+$html = file_get_contents($url1);  
+
+echo "#";
+echo $html;  
+	
+}
+
+
+function getRandStr($length) {  
+
+$str = '0123456789'; 
+$randString = ''; 
+$len = strlen($str)-1; 
+for($i = 0;$i < $length;$i ++)
+{ 
+$num = mt_rand(0, $len); $randString .= $str[$num];
+ } 
+ return $randString ; 
+}
 
 
 

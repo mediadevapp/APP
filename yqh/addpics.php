@@ -2,14 +2,19 @@
 
 
 if (empty($_POST['eventsid'])){
+
 echo "请上传eventsid";
 exit(0);
+
 } 
 
 $eid = $_POST['eventsid'];
 //echo  $eid;
 
 $op = getpicspath($eid);
+
+emptypicspath($eid);
+
 
 
 if (empty($_POST['uploadN'])){
@@ -59,11 +64,9 @@ if ((($_FILES["file"]["type"] == "image/gif")|| ($_FILES["file"]["type"] == "app
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://card.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$op;  
+      $_picpath .= "http://card.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
 
-   
-      
-      uploadpic($eid,$_picpath);
+     uploadpic($eid,$_picpath);
       
    
       }
@@ -77,7 +80,7 @@ if ((($_FILES["file"]["type"] == "image/gif")|| ($_FILES["file"]["type"] == "app
       "pics/" . $_FILES["file"]["name"]);
       
       
-      $_picpath .= "http://card.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#".$op;  
+      $_picpath .= "http://card.allappropriate.com/" . "pics/" . $_FILES["file"]["name"]."#";  
       
       uploadpic($eid,$_picpath);
       
@@ -176,14 +179,47 @@ if (!$con)
 
 mysql_close($con);
 
+}
 
-	
+
+
+function emptypicspath($eid){
+
+//地址
+$url = "120.131.70.218";
+//账号
+$user = "root";
+//密码
+$password = "1q2w3e4r5t6yJUSHI$";
+//连接
+$con = mysql_connect($url,$user,$password);
+//设置编码机
+mysql_query("set names 'utf8'");
+//连接数据库
+mysql_select_db("supercard");
+
+$sql = "UPDATE `eventsinfo` SET `pic` = '' WHERE  `eventsid` = '$eid'";
+
+//echo($sql);
+
+ if (!mysql_query($sql,$con))
+
+ {
+
+   die('Error: ' . mysql_error());
+
+ }
+
+ echo ">>>>>>>Success<<<<<<<<<";
+
+  //关闭连接
+
+ mysql_close($con);
+
 	
 	
 	
 }
-
-
 
 
 ?>

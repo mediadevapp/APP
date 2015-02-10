@@ -40,7 +40,7 @@ $mobilenum = $_GET['mobilenum'];
 
 
 
-$mb = ismobilenum($mobilenum);
+$mb = ismobilenum($mobilenum,$eid);
 
 
 if(empty($mb)){
@@ -85,7 +85,7 @@ echo JSON($array);
  
 
 
-function ismobilenum($mobilenum){
+function ismobilenum($mobilenum,$eid){
 
 
 
@@ -105,12 +105,13 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `joinuser` WHERE  `mobilenum` =  '$mobilenum' ";
+  $sql = "SELECT * FROM  `joinuser` WHERE  `mobilenum` =  '$mobilenum' and  `eventsid`='$eid' ";
   
   //echo($sql);
 
   $result = mysql_query($sql);
   
+
  while($row = mysql_fetch_array($result))
 
   {

@@ -23,7 +23,7 @@ $tmpname = gettmpinfo($tmpid);
 
 if (empty($tmpname)){
 
-echo "sorry>>";
+echo "sorry";
 
 exit(0);
 
@@ -32,6 +32,32 @@ exit(0);
 
 
 $eid = $_GET['eid'];
+
+
+$pics = getpicpath($eid);
+
+//echo $pics;
+
+$picsArray = explode("#", $pics);
+
+
+
+$swiperslide = "<div class=swiper-slide><img src='".$picsArray[0]."' style='height:100%;width:100%;'/></div>"."<div class=swiper-slide><img src='".$picsArray[1]."' style='height:100%;width:100%;'/></div>"."<div class=swiper-slide><img src='".$picsArray[2]."' style='height:100%;width:100%;'/></div>"; 
+
+//echo $swiperslide;
+
+
+
+/*
+	
+	            <div class=swiper-slide>
+                    <img src='img/party/15-4.png' style='height:100%;width:100%;'/>
+                </div>
+	
+	
+*/
+
+
 
 geteventdetails($eid,trim($tmpname));
 
@@ -148,9 +174,10 @@ $count = getcount($eid);
 //echo $count;
 //echo $tmpname;
 
-
+Global $swiperslide;
+//echo $swiperslide;  
 	
-crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice);
+crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$swiperslide);
 	
 
 }
@@ -213,7 +240,8 @@ return  $count;
 
 
 
-function crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice){
+function crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$swiperslide){
+
 
 
 
@@ -334,6 +362,8 @@ file_put_contents($templatename,$html);
 echo "http://card.allappropriate.com/h5/".$templatename; 
 
 }
+
+
 if (trim($tmpname) == trim("newyear")){
 
 $html=<<<EOT
@@ -594,6 +624,7 @@ $templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
 file_put_contents($templatename,$html);
 
 echo "http://card.allappropriate.com/h5/".$templatename; 
+
 }
 
 
@@ -734,6 +765,9 @@ echo "http://card.allappropriate.com/h5/".$templatename;
 if (trim($tmpname) == trim("Party")){
 
 $html=<<<EOT
+
+
+
 <!DOCTYPE html>
 <html class="ks-webkit533 ks-webkit">
 <head>
@@ -760,15 +794,14 @@ $html=<<<EOT
                 <div class="layer layer1-4">
                  <div class="swiper-container images" style="z-index:0;position: relative;width:100%;height:100%;overflow: hidden;">
                   <div class="swiper-wrapper">
+                  
+                  
                    <div class="swiper-slide ">
                     <img src="img/party/1-4.png" style="height:100%;width:100%;"/>
                 </div>
-                <div class="swiper-slide ">
-                    <img src="img/party/1-4.png" style="height:100%;width:100%;"/>
-                </div>
-                <div class="swiper-slide ">
-                    <img src="img/party/1-4.png" style="height:100%;width:100%;"/>
-                </div>
+      
+                $swiperslide
+                
             </div>
         </div>
 
@@ -812,7 +845,10 @@ $html=<<<EOT
 <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
 <script type="text/javascript" src="js/preload.js"></script>
 <script type="text/javascript" src="js/response.js"></script>
-<script>var eid = $eid;</script>
+
+<script>
+var eid = $eid;
+</script>
 
 
 <div class="music1">
@@ -1681,9 +1717,9 @@ $html=<<<EOT
 <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
 <script type="text/javascript" src="js/preload.js"></script>
 <script type="text/javascript" src="js/response.js"></script>
-<script>
-   
-</script>
+   <script>
+                var eid = $eid;
+            </script>
 
 <div class="music1">
 <img src="img/music1_play.png" style="width: 100%">
@@ -1936,124 +1972,55 @@ echo "http://card.allappropriate.com/h5/".$templatename;
 }
 
 
+}
 
-if (trim($tmpname) == trim("birthday01")){
-
-$html=<<<EOT
-
+function getpicpath($eid){
 
 
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
 
-EOT;
+if (!$con)
 
+  {
 
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
+  die('数据库连接失败: ' . mysql_error());
 
-echo "http://card.allappropriate.com/h5/".$templatename;
+  }
+
+  else
+
+  {
+
+  mysql_select_db("supercard", $con);
+  
+  $sql = "SELECT pic FROM  `eventsinfo`  WHERE   eventsid  = '$eid' ";
+  
+  //echo($sql);
+
+  $result = mysql_query($sql);
+  
  
+   
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   //$arr["uid"]=$row["uid"];
+   $picpath = $row["pic"];
+   
+  }
+  
+  //echo $picpath."##path=";
+  return $picpath; 
+
+  }
+
+mysql_close($con);
+	
+	
 }
 
-
-
-if (trim($tmpname) == trim("birthday02")){
-
-$html=<<<EOT
-
-
-
-
-EOT;
-
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
-
-echo "http://card.allappropriate.com/h5/".$templatename;
- 
-}
-
-
-}
-
-
-
-if (trim($tmpname) == trim("business03")){
-
-$html=<<<EOT
-
-
-
-
-EOT;
-
-
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
-
-echo "http://card.allappropriate.com/h5/".$templatename;
- 
-}
-
-
-if (trim($tmpname) == trim("business04")){
-
-$html=<<<EOT
-
-
-
-
-EOT;
-
-
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
-
-echo "http://card.allappropriate.com/h5/".$templatename;
- 
-}
-
-
-if (trim($tmpname) == trim("concert")){
-
-$html=<<<EOT
-
-
-
-
-EOT;
-
-
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
-
-echo "http://card.allappropriate.com/h5/".$templatename;
- 
-}
-
-
-
-if (trim($tmpname) == trim("ktv")){
-
-$html=<<<EOT
-
-
-
-
-EOT;
-
-
-//$templatename =  $tmpname. ".html";
-$templatename =  $tmpname."_".date("Y-m-d") . rand() . ".html";
-file_put_contents($templatename,$html);
-
-echo "http://card.allappropriate.com/h5/".$templatename;
- 
-}
 
 
 

@@ -7,7 +7,6 @@ exit(0);
 
 
 
-
 if (empty($_POST['username'])){
 echo "没有输入用户名称";
 exit(0);
@@ -38,10 +37,6 @@ exit(0);
 } 
 
 
-if (empty($_POST['photo'])){
-echo "没有默认图片";
-exit(0);
-} 
 
  $photo = "http://card.allappropriate.com/eventspic/demo.jpg";
  

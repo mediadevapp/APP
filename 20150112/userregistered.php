@@ -102,7 +102,7 @@ mysql_select_db("star_app");
 
 $sql = "insert into userinfo (uid,username,nickname,password,phrase,sex,xing,photo,capital,userage)  values('$userId','$username','$nickname','$pwd','$phrase','$sex','$xing','$photo','$capital','$userAge')";
 
-echo $sql;
+//echo $sql;
 
  if (!mysql_query($sql,$con))
 
@@ -122,6 +122,7 @@ $array = array
 
 
 echo JSON($array);
+
 mysql_close($con);
  
 
