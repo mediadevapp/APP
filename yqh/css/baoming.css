@@ -1,0 +1,65 @@
+@charset "utf-8";
+	.content_black{
+		font-family:Helvetica,Microsoft YaHei,Verdana, Arial;
+		background-color:#313131;
+		position:absolute;
+		top:22.2%;
+		left:7.6%;
+		height:56.7%;
+		width:85%;
+		//border-radius:10px;
+	}
+	.cancel{
+		top:2.6%;
+		height:25px;
+		right:2.1%;
+		width:25px;
+		position:absolute;
+		background:url(../img/cancel1.png) no-repeat;
+		background-size:100% 100%;
+	}
+	
+	.input_div{	
+		border-radius:25px;
+		color:#F4BC34;font-size: 18px;
+		font-weight: bold;
+		line-height: 35px;position:absolute;left:6.8%;height:11.2%;width:86.5%;background-color:rgba(255,255,255,0.25);
+	}
+	.input_div input{
+	
+		color:#fff;
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 35px;
+		position:absolute;
+		top:0;
+		right:0;
+		width:70%;
+		border:0;
+		background-color:rgba(0,0,0,0);
+		
+	} 
+	#content_text{
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding:10px 15px 0px 15px;
+		color:#fff;
+		border-radius:25px;
+		font-size: 18px;
+		font-weight: bold;position:absolute;top:42.9%;left:6.8%;height:31%;width:86.5%;background-color:rgba(255,255,255,0.25);border:0;
+	}
+	#submit{
+		bottom:-5%;
+		height:19.5%;
+		right:0%;
+		width:100%;
+		position:absolute;
+		background-color:#F4BC34;
+		text-align:center;
+		//border-bottom-left-radius: 8px;
+		//border-bottom-right-radius: 8px;
+	}
+	#submit img{
+	left:35.9%;width:80px;top:30%;position:absolute;
+	}

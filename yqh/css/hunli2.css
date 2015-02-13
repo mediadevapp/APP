@@ -1,0 +1,147 @@
+
+.layer1{background:url(../img/hunli2/1.jpg) no-repeat;background-size: 100% 100%;z-index:2;}
+.layer1 .layer1-1{background:url(../img/hunli2/1-1.png) no-repeat;background-size: 100% 100%;width:57.34%;height:6.33%;top:87.35%;left:21.41%;}
+.layer1 .layer1-10{background:url(../img/hunli2/1-10.jpg) no-repeat;background-size: 100% 100%;width:100.00%;height:19.95%;top:80.05%;left:0.00%;}
+.layer1 .layer1-11{background:url(../img/hunli2/1-11.png) no-repeat;background-size: 100%;width:43.91%;height:50%;top:9.58%;left:28.28%;}
+.layer1 .layer1-12{background:url() no-repeat;background-size: 100% ;width:43.91%;height:50%;top:9.58%;left:28.28%;}
+.layer1 .layer1-13{background:url(../img/hunli2/1-13.png) no-repeat;background-size: 100% ;width:100.00%;height:50%;top:0%;left:0.00%;}
+.layer1 .layer1-14{background:url(../img/hunli2/1-14.png) no-repeat;background-size: 100% 100%;width:33.75%;height:15.47%;top:73.99%;left:33.28%;}
+.layer1 .layer1-15{background:url(../img/hunli2/1-15.png) no-repeat;background-size: 100% 100%;width:39.53%;height:22.23%;top:70.12%;left:30.47%;}
+.layer1 .layer1-16{background:url(../img/hunli2/1-16.png) no-repeat;background-size: 100% 100%;width:42.50%;height:24.08%;top:69.16%;left:28.75%;}
+.layer1 .layer1-17{background:url(../img/hunli2/1-17.png) no-repeat;background-size: 100% 100%;width:22.50%;height:2.46%;top:43.50%;left:39.22%;}
+.layer1 .layer1-18{background:url(../img/hunli2/1-18.png) no-repeat;background-size: 100% 100%;width:22.34%;height:1.67%;top:47.10%;left:39.38%;}
+
+.photos img{width:45%;margin:5px 3px 0px 0px;height:auto;}
+.layer1 .layer1-6{background:url(../img/hunli2/1-6.png) no-repeat;background-size: 100% 100%;width:6.25%;height:3.51%;top:63.53%;left:13.12%;}
+.layer1 .layer1-7{background:url(../img/hunli2/1-7.png) no-repeat;background-size: 100% 100%;width:3.12%;height:2.55%;}
+.layer1 .layer1-7{
+    background: url(../img/hunli2/1-7.png) no-repeat;
+    background-size: 25% 25%;
+    background-position: center center;
+    width: 12.48%;
+    height: 10.2%;
+    top: 24%;
+    left: 9.90%;
+}
+.layer1 .layer1-8{
+    background: url(../img/hunli2/1-8.png) no-repeat;
+    background-size: 25% 25%;
+    background-position: center;
+    width: 12.48%;
+    height: 10.2%;
+    top: 24%;
+    left: 80.16%;
+}
+.layer1 .layer1-9{background:url(../img/hunli2/1-9.jpg) no-repeat;background-size: 100% 100%;width:100.00%;height:80.23%;top:0%;left:0.00%;}
+@keyframes mapJump {
+    0% {transform:translateY(0);}
+    20% {transform:translateY(0);}
+    40% {transform:translateY(-15px);}
+    50% {transform:translateY(0);}
+    60% {transform:translateY(-7px);}
+    80% {transform:translateY(0);}
+    100% {transform:translateY(0);}
+}
+@-webkit-keyframes mapJump {
+    0% {-webkit-transform:translateY(0);}
+    20% {-webkit-transform:translateY(0);}
+    40% {-webkit-transform:translateY(-15px);}
+    50% {-webkit-transform:translateY(0);}
+    60% {-webkit-transform:translateY(-7px);}
+    80% {-webkit-transform:translateY(0);}
+    100% {-webkit-transform:translateY(0);}
+}
+.right{
+    animation: mapJump 2s infinite;
+    -webkit-animation: mapJump 2s infinite;
+    position:absolute;right: 45%;
+}
+@keyframes flush {
+    0% {transform:scale(1);opacity:1;}
+    50% {transform:scale(0.9);opacity:0.5;}
+    100% {transform:scale(1);opacity:1;}
+}
+@-webkit-keyframes flush {
+    0% {-webkit-transform:scale(1);opacity:1;}
+    50% {-webkit-transform:scale(0.9);opacity:0.5;}
+    100% {-webkit-transform:scale(1);opacity:1;}
+}
+.flush{
+    animation: flush 2s infinite;
+    -webkit-animation: flush 2s infinite;
+}
+@keyframes zhuan {
+    0% {transform:rotate(0deg);}
+    50% {transform:rotate(180deg);}
+    100% {transform:rotate(360deg);}
+}
+@-webkit-keyframes zhuan {
+    0% {-webkit-transform:rotate(0deg);}
+    50% {-webkit-transform:rotate(180deg);}
+    100% {-webkit-transform:rotate(360deg);}
+}
+.zhuan{
+    animation: zhuan 10s linear infinite;
+    -webkit-animation: zhuan 10s linear infinite;
+}
+@keyframes zhuan2 {
+    0% {transform:rotate(0deg);}
+    50% {transform:rotate(-180deg);}
+    100% {transform:rotate(-360deg);}
+}
+@-webkit-keyframes zhuan2 {
+    0% {-webkit-transform:rotate(0deg);}
+    50% {-webkit-transform:rotate(-180deg);}
+    100% {-webkit-transform:rotate(-360deg);}
+}
+.zhuan2{
+    animation: zhuan2 10s linear infinite;
+    -webkit-animation: zhuan2 10s linear infinite;
+}
+
+.text1-7{
+	color:#4d4d4d;
+	font-size:12px;
+	font-family:Helvetica,Microsoft YaHei,Verdana, Arial;
+	position:absolute;
+	text-align:left;
+	width:100%;
+	height:4%;
+	left:21%;
+}
+.text1{
+	left:0%;
+	width:100%;
+	text-align:center;
+	top:80.5%;
+}		
+.text2{
+	
+	top:54.1%;
+}		
+.text3{
+	top:57.5%;
+	
+}		
+.text4{
+	top:60.9%;
+}		
+.text5{
+	top:64.3%;
+	line-height:18px;
+}
+.text6{
+	top:70.6%;
+}		
+.text7{
+	top:74.2%;
+}
+.imgContainer,.imgContainer img{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 2px 2px;
+    width: 50%;
+    height: 50%;
+    float: left;
+}

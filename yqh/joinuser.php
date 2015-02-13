@@ -15,11 +15,14 @@ echo "没有输入活动ID";
 exit(0);
 }
 
+/*
 if (empty($_GET['econtent'])){
+
 echo "没有输入活动内容";
+
 exit(0);
 }  
-
+*/
 
 
 $uid = getRandStr($length=10);

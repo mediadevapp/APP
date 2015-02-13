@@ -93,7 +93,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `templateinfo` where categoryname = '$cname'";
+  $sql = "SELECT * FROM  `templateinfo` where categoryname = '$cname' ORDER BY `templateid` ASC ";
   
  // echo($sql);
 
