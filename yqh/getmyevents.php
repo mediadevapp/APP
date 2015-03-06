@@ -90,7 +90,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `eventsinfo` WHERE  `userid` =  '$uid' ORDER BY  `endtime` ASC ";
+  $sql = "SELECT * FROM  `eventsinfo` WHERE  `userid` =  '$uid' and  `status` = 'Y'ORDER BY  `eid` DESC ";
   
   //echo($sql);
 

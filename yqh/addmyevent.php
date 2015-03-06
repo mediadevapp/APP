@@ -24,7 +24,6 @@ exit(0);
 } 
 
 
-
 if (empty($_POST['mobilenum'])){
 echo "没有输入联系人电话号码";
 exit(0);
@@ -48,6 +47,16 @@ exit(0);
   $username2 = $_POST['username2'];
   
   $title = $_POST['title'];
+  
+  if(strlen($title)>30){
+	  
+	  echo "活动标题超出限制";
+      exit(0);
+	  
+  }
+  
+  
+  
   $content = $_POST['content'];
   
   
@@ -73,12 +82,17 @@ exit(0);
   $latitude = $_POST['latitude'];
   
   $locations = $_POST['location'];
+  
+  
+  
+  
   $bgmusic = $_POST['bgmusic'];
+  
+  $status ='N';
 
 
 
-
-  addevents($eventid,$userid,$username,$username2,$title,$content,$mobile,$photo,$templateid,$startime,$endtime,$locations,$longitude,$latitude,$bgmusic);
+  addevents($eventid,$userid,$username,$username2,$title,$content,$mobile,$photo,$templateid,$startime,$endtime,$locations,$longitude,$latitude,$bgmusic,$status);
 
 
 
@@ -96,7 +110,7 @@ $num = mt_rand(0, $len); $randString .= $str[$num];
 
 
 
-function addevents($eid,$userid,$username,$username2,$title,$content,$mobile,$photo,$templateid,$startime,$endtime,$locations,$longitude,$latitude,$bgmusic){
+function addevents($eid,$userid,$username,$username2,$title,$content,$mobile,$photo,$templateid,$startime,$endtime,$locations,$longitude,$latitude,$bgmusic,$status){
 //地址
 $url = "120.131.70.218";
 //账号
@@ -110,7 +124,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("supercard");
 
-$sql = "insert into eventsinfo (eventsid,userid,username,username2,title,content,mobile,pic,templateid,startime,endtime,status,locations,longitude,latitude,bgmusic)  values('$eid','$userid','$username','$username2','$title','$content','$mobile','$photo','$templateid','$startime','$endtime','1','$locations','$longitude','$latitude','$bgmusic')";
+$sql = "insert into eventsinfo (eventsid,userid,username,username2,title,content,mobile,pic,templateid,startime,endtime,locations,longitude,latitude,bgmusic,status)  values('$eid','$userid','$username','$username2','$title','$content','$mobile','$photo','$templateid','$startime','$endtime','$locations','$longitude','$latitude','$bgmusic','$status')";
 
 //echo $sql;
 
@@ -122,7 +136,7 @@ $sql = "insert into eventsinfo (eventsid,userid,username,username2,title,content
 
  }
  //echo "Success";
- echo $eid;
+ echo trim($eid);
   //关闭连接
  mysql_close($con);
  

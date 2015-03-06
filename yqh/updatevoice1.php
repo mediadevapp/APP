@@ -11,7 +11,7 @@ $eid = $_GET['eventsid'];
 
 
 if (empty($_GET['voicepath'])){
-echo "please voicepath";
+echo "please input voicepath";
 exit(0);
 } 
 

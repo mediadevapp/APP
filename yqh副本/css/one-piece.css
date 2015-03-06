@@ -1,0 +1,85 @@
+.layer1{background:url(../img/one-piece/1.jpg) no-repeat;background-size: 100% 100%;z-index:2;}
+        .layer1 .layer1-1{background:url(../img/one-piece/1-1.png) no-repeat;background-size: 100% 100%;width:100.00%;height:100.00%;top:0.00%;left:0.00%;}
+        .layer1 .layer1-10{background:url(../img/one-piece/1-10.png) no-repeat;background-size: 100% 100%;width:100.00%;height:0.42%;top:63.59%;left:0.00%;}
+        .layer1 .layer1-11{background:url(../img/one-piece/1-11.png) no-repeat;background-size: 100% 100%;width:49.22%;height:16.24%;top:64.44%;left:24.53%;}
+        .layer1 .layer1-12{background:url(../img/one-piece/1-12.png) no-repeat;background-size: 100% 100%;width:24.69%;height:16.24%;top:64.44%;left:49.06%;}
+        .layer1 .layer1-13{background:url(../img/one-piece/1-13.png) no-repeat;background-size: 100% 100%;width:49.22%;height:16.24%;top:64.44%;left:24.53%;}
+        .layer1 .layer1-14{background:url(../img/one-piece/1-14.png) no-repeat;background-size: 100% 100%;width:49.22%;height:16.24%;top:64.44%;left:24.53%;}
+        .layer1 .layer1-15{background:url(../img/one-piece/1-15.png) no-repeat;background-size: 100% 100%;width:100.00%;height:100.00%;top:0.00%;left:0.00%;}
+        .layer1 .layer1-16{background:url(../img/one-piece/1-16.png) no-repeat;background-size: 100% 100%;width:100.00%;height:100.00%;top:0.00%;left:0.00%;}
+		.layer1 .layer1-2{background:url() no-repeat;background-size: 100% 100%;width:100.00%;height:100.00%;top:0.00%;left:0.00%;}
+        .layer1 .layer1-3{background:url(../img/one-piece/1-3.png) no-repeat;background-size: 100% 100%;width:20.94%;height:11.78%;top:57.80%;left:73.59%;}
+        .layer1 .layer1-4{background:url(../img/one-piece/1-4.png) no-repeat;background-size: 100% 100%;width:18.13%;height:10.19%;top:58.45%;left:74.89%;}
+        .layer1 .layer1-5{background:url(../img/one-piece/1-5.png) no-repeat;background-size: 100% 100%;width:14.68%;height:8.17%;top:59.5%;left:76.62%;}
+        .layer1 .layer1-6{background:url(../img/one-piece/1-6.png) no-repeat;background-size: 100% 100%;width:10%;height:5.54%;top:60.92%;left:79.06%;}
+        .layer1 .layer1-7{background:url(../img/one-piece/1-7.png) no-repeat;background-size: 100% 100%;width:10.94%;height:1.32%;top:63%;left:78.59%;}
+        .layer1 .layer1-8{background:url(../img/one-piece/1-8.jpg) no-repeat;background-size: 100% 100%;width:100%%;height:100%%;top:0%;left:0%;}
+        .layer1 .layer1-9{background:url(../img/one-piece/1-9.png) no-repeat;background-size: 100% 100%;width:49.22%;height:16.24%;top:64.44%;left:24.53%;}
+            @keyframes mapJump {
+            0% {transform:translateY(0);opacity:1}
+            20% {transform:translateY(0);opacity:1}
+            40% {transform:translateY(-10px);opacity:0.5}
+            50% {transform:translateY(0);opacity:1}
+            60% {transform:translateY(-5px);opacity:0.8}
+            80% {transform:translateY(0);opacity:1}
+            100% {transform:translateY(0);opacity:1}
+        }
+        @-webkit-keyframes mapJump {
+            0% {-webkit-transform:translateY(0);opacity:1}
+            20% {-webkit-transform:translateY(0);opacity:1}
+            40% {-webkit-transform:translateY(-10px);opacity:0.5}
+            50% {-webkit-transform:translateY(0);opacity:1}
+            60% {-webkit-transform:translateY(-5px);opacity:0.8}
+            80% {-webkit-transform:translateY(0);opacity:1}
+            100% {-webkit-transform:translateY(0);opacity:1}
+        }
+        .right{
+            animation: mapJump 2s infinite;
+            -webkit-animation: mapJump 2s infinite;
+            position:absolute;
+           }
+		   @keyframes flush {
+            0% {transform:scale(1);opacity:1;}
+            50% {transform:scale(0.9);opacity:0.5;}
+            100% {transform:scale(1);opacity:1;}
+        }
+        @-webkit-keyframes flush {
+            0% {-webkit-transform:scale(1);opacity:1;}
+            50% {-webkit-transform:scale(0.9);opacity:0.5;}
+            100% {-webkit-transform:scale(1);opacity:1;}
+        }
+        .flush{
+            animation: flush 2s infinite;
+            -webkit-animation: flush 2s infinite;
+        }
+		.text1-7{
+	color:#FFFFFF;
+	font-size:12px;
+	font-family:Helvetica, Microsoft YaHei,Verdana, Arial;
+	position:absolute;
+	text-align:right;
+	width:95%;
+	height:4%;
+	left:0;
+}
+.text1{
+	top:94.90%;
+}		
+.text2{
+	top:72.3%;
+}		
+.text3{
+	top:75.5%;
+}		
+.text4{
+	top:79.2%;
+}		
+.text5{
+	top:82.6%;
+}
+.text6{
+	top:86.2%;
+}		
+.text7{
+	top:89.2%;
+}

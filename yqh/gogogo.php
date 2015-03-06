@@ -158,18 +158,25 @@ if (!$con)
  }
 
 
+
+
+
+if (empty($userid)){
+
+echo "错误的模版ID或活动ID";
+exit(0);
+
+}else{
+
+//echo $userid."#";
 //echo $eid.$userid.$username.$mobile.$title.$content.$startime.$endtime.$pics.$location.$music;
-
 $count = getcount($eid);
-
-//echo $count;
-//echo $tmpname;
-
 Global $tmpid;
 //echo $swiperslide;  
-	
 crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$tmpid);
 	
+}
+
 
 }
 
@@ -307,7 +314,7 @@ $html=<<<EOT
                     <div class="layer layer1-11 text8-14"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html"><img src="img/activity/1-7.png" style="width:8.66%;height:100%;"/></a> 地址:$location</div>
                     <div class="layer layer1-12 text8-14">联系人:$username</div>
                     <div class="layer layer1-13 text8-14">联系方式:&nbsp;$mobile</div>
-                    <div class="layer layer1-14 text8-14">报名人数:$count</div>                
+                    <div class="layer layer1-14 text8-14">已报名人数<span id="ucount" style="font-size:18px;"></span></div>                
                 </div>
                 <div class="layer layer1-23"></div>
                 <div class="layer layer1-24"></div>
@@ -354,8 +361,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
-            
+
+
             
         </body>
         </html>
@@ -420,12 +440,11 @@ $html=<<<EOT
 								<div class="swiper-slide ">
 									<img src="img/chunjie/1-10.png" style="height:100%;width:100%;"/>
 								</div>
-								<div class="swiper-slide ">
-									<img src="img/chunjie/1-10.png" style="height:100%;width:100%;"/>
-								</div>
-								<div class="swiper-slide ">
-									<img src="img/chunjie/1-10.png" style="height:100%;width:100%;"/>
-								</div>
+					
+                               $swiperslide
+
+								
+								
 							</div>
 						</div>
 					</div>
@@ -440,7 +459,7 @@ $html=<<<EOT
 					地址：$location</p>
 					<p class="text1-7 text5">联系人:$username </p>
 					<p class="text1-7 text6">联系方式：$mobile</p>
-					<p class="text1-7 text7">已报名人数：<span style="font-size:18px;">$count</span></p>
+					<p class="text1-7 text7">已报名人数：<span id="ucount" style="font-size:18px;"></span></p>
 
 					<div class="page1" style="position:absolute;width:100%;height:100%;">
 						<div class="layer layer1-13"></div>
@@ -474,8 +493,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
-            
+
+
             
 		<div class="music1">
 		<img src="img/music1_play.png" style="width: 100%">
@@ -544,7 +576,7 @@ $html=<<<EOT
                     <div class="layer layer1-4"></div>
                     <div class="layer layer1-5"></div>
                     <div class="layer layer1-6 button"></div>
-                    <p class="text1-7 text1">已报名人数：<span style="font-size:18px;">$count</span></p>
+                    <p class="text1-7 text1">已报名人数：<span id="ucount" style="font-size:18px;"></span></p>
                     <p class="text1-7 text2">主题：$title</p>
                     <p class="text1-7 text3">时间：$startime </p>
                     <p class="text1-7 text4">           $endtime </p>
@@ -571,12 +603,8 @@ $html=<<<EOT
                                 <div class="swiper-slide ">
                                     <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
                                 </div>
-                                <div class="swiper-slide ">
-                                    <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
-                                </div>
-                                <div class="swiper-slide ">
-                                    <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
-                                </div>
+                            
+                            $swiperslide
                             </div>
                         </div>
                     </div>
@@ -609,7 +637,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 		<div class="music1">
 		<img src="img/music1_play.png" style="width: 100%">
@@ -682,12 +724,8 @@ $html=<<<EOT
 					<div class="swiper-slide ">
 						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
 					</div>
-					<div class="swiper-slide ">
-						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
-					</div>
-					<div class="swiper-slide ">
-						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
-					</div>
+				
+				$swiperslide
 				</div>
 			</div>
 		</div>
@@ -697,7 +735,7 @@ $html=<<<EOT
 		<div class="layer layer1-20"></div>
 		<div class="layer layer1-23 button"></div>
 		<div class="layer layer1-21 button"></div>
-		<div class="text1-10 text1">报名人数：$count</div>
+		<div class="text1-10 text1">报名人数：<span id="ucount" style="font-size:18px;"></span></div>
 		<div class="text1-10 text2">Dear</div>
 		<div class="text1-10 text3">we accompanied the most beautiful time</div>
 		<div class="text1-10 text4">亲爱的——我们相伴最美的时光</div>
@@ -745,10 +783,26 @@ $html=<<<EOT
 <script type="text/javascript" src="js/preload.js"></script>
 <script type="text/javascript" src="js/response.js"></script>
 <script type="text/javascript" src="js/love.js"></script>
+
+
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 <div class="music1">
 <img src="img/music1_play.png" style="width: 100%">
@@ -840,7 +894,7 @@ $html=<<<EOT
    <p class="text1-7 text6"><span > <a style='color:#986a24;' href="tel:$mobile">联系方式：$mobile </a></span> </p>
    
    
-    <p class="text1-7 text7" style='color:#986a24;'>已报名人数：<span style='color:#986a24;' id="attend_num" style="font-size:18px;">$count</span></p>
+    <p class="text1-7 text7" style='color:#986a24;'>已报名人数：<span style='color:#986a24;' id="attend_num" style="font-size:18px;"></span></p>
    
     <div class="layer layer1-8 button"></div>    
     <div class="layer layer1-9"></div>
@@ -871,7 +925,20 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+//alert(url);
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#attend_num").append(text); 
+} 
+);    
 </script>
+
 
 
 <div class="music1">
@@ -946,7 +1013,7 @@ $html=<<<EOT
 					<div class="layer layer1-6"></div>
 					<div class="layer layer1-7"></div>
 					<div class="layer layer1-8"></div>
-					<p class="text1-7 text1">已报名人数：<span style="font-size:18px;">$count</span></p>
+					<p class="text1-7 text1">已报名人数：<span id="ucount"  style="font-size:18px;"></span></p>
 					<p class="text1-7 text2">主题：$title</p>
 					<p class="text1-7 text3">时间：$startime  </p>
 					<p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime</p>
@@ -999,7 +1066,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 
 		<div class="music1">
@@ -1070,12 +1151,10 @@ $html=<<<EOT
 						<div class="swiper-slide ">
 							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
 						</div>
-						<div class="swiper-slide ">
-							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
-						</div>
-						<div class="swiper-slide ">
-							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
-						</div>
+					
+					
+					$swiperslide
+					
 					</div>
 				</div>
 			</div>
@@ -1084,7 +1163,7 @@ $html=<<<EOT
 			<div class="layer layer1-5"></div>
 			<div class="layer layer1-6 button"></div>
 			<div class="layer layer1-7 flush2 button"></div>
-			<p class="text1-7 text1">已报名人数：<span style="font-size:18px;">$count</span></p>
+			<p class="text1-7 text1">已报名人数：<span style="font-size:18px;" id='ucount'></span></p>
 			<p class="text1-7 text2">主题：$title</p>
 			<p class="text1-7 text3">时间：$startime  </p>
 			<p class="text1-7 text4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$endtime</p>
@@ -1118,7 +1197,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 
 <div class="music1">
@@ -1221,7 +1314,7 @@ $html=<<<EOT
 						地址：$location</p>
 						<p class="text1-7 text6">联系人：$username </p>
 						<p class="text1-7 text7">联系方式：$mobile </p>
-						<p class="text1-7 text1">已报名人数：<span style="font-size:18px;">$count</span></p>
+						<p class="text1-7 text1">已报名人数：<span style="font-size:18px;" id="ucount"></span></p>
 
 						<div class="layer layer1-7"></div>
 						<div class="layer layer1-8"></div>
@@ -1236,12 +1329,9 @@ $html=<<<EOT
 									<div class="swiper-slide ">
 										<img src="img/hunli2/1-12.png" style="width:100%;"/>
 									</div>
-									<div class="swiper-slide ">
-										<img src="img/hunli2/1-12.png" style="width:100%;"/>
-									</div>
-									<div class="swiper-slide ">
-										<img src="img/hunli2/1-12.png" style="width:100%;"/>
-									</div>
+								
+								  $swiperslide
+								
 								</div>
 							</div>
 						</div>
@@ -1264,10 +1354,27 @@ $html=<<<EOT
 		<script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
 		<script type="text/javascript" src="js/preload.js"></script>
 		<script type="text/javascript" src="js/response.js"></script>
-   <script>
+
+
+<script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
+
 
 		<div class="music1">
 			<img src="img/music1_play.png" style="width: 100%">
@@ -1332,7 +1439,7 @@ $html=<<<EOT
     <div class="swiper-slide page layer1">
 		<div class="dialog"></div>
 		<div class='layer pageContainer' id='container3'>
-	 			<p class="text1-7 text7" style='z-index:20;'>已报名人数：<span style="font-size:18px;">$count</span></p>
+	 			<p class="text1-7 text7" style='z-index:20;'>已报名人数：<span style="font-size:18px;" id="ucount"></span></p>
 	 			<div class="layer layer1-11 button" style='z-index:20;'></div>
 	 	</div>	
 		<div class='layer pageContainer' id="container2">
@@ -1357,12 +1464,10 @@ $html=<<<EOT
 							<p class="text1-7 text5">联系人：$username </p>
 							<p class="text1-7 text6">联系方式：$mobile</p>
 						</div>
-						<div class="swiper-slide ">
-							<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-						</div>
-						<div class="swiper-slide ">
-							<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-						</div>
+					
+					
+					
+					$swiperslide
 					</div>
 				</div>
 				
@@ -1393,10 +1498,26 @@ $html=<<<EOT
 <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
 <script type="text/javascript" src="js/preload.js"></script>
 <script type="text/javascript" src="js/response.js"></script>
+
+
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 <div class="music1">
 <img src="img/music1_play.png" style="width: 100%">
@@ -1483,16 +1604,14 @@ $html=<<<EOT
 						<p class="text1-7 text5">联系人：$username </p>
 						<p class="text1-7 text6">联系方式：$mobile</p>
 					</div>
-					<div class="swiper-slide ">
-						<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-					</div>
-					<div class="swiper-slide ">
-						<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-					</div>
+				
+					
+					$swiperslide
+				
 				</div>
 			</div>
 		</div>
-		<p class="text1-7 text7">已报名人数：<span style="font-size:18px;">$count</span></p>
+		<p class="text1-7 text7">已报名人数：<span style="font-size:18px;" id="ucount"></span></p>
 		<div class="layer layer1-5"></div>
 		<div class="layer layer1-6"></div>
 		<div class="layer layer1-7"></div>
@@ -1518,7 +1637,21 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 <div class="music1">
 <img src="img/music1_play.png" style="width: 100%">
@@ -1608,7 +1741,7 @@ $html=<<<EOT
                         <div class="layer layer1-7"></div>
                         <div class="layer layer1-8"></div>
 						<div class="layer layer1-17 button flush"></div>
-                        <p class="text1-7 text8">报名人数：<span style="font-size:18px;">$count</span></p>
+                        <p class="text1-7 text8">报名人数：<span style="font-size:18px;" id="ucount"></span></p>
                         <p class="text1-7 text2">主题：看电影吧</p>
                         <p class="text1-7 text3">时间：$startime </p>
                         <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
@@ -1631,10 +1764,25 @@ $html=<<<EOT
       <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
       <script type="text/javascript" src="js/preload.js"></script>
       <script type="text/javascript" src="js/response.js"></script>
-      <script>
+   
+   <script>
+var eid = $eid;
+var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
 
 
-      </script>
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
+</script>
+
+
 
       <div class="music1">
         <img src="img/music1_play.png" style="width: 100%">
@@ -1710,7 +1858,7 @@ $html=<<<EOT
 <div class="layer layer1-7 button"></div>
 <div class="layer layer1-7s button"></div>
 <div class="dialog"></div>
-<p class="text1-7 text1">报名人数：<span style="font-size:18px;">$count</span></p>
+<p class="text1-7 text1">报名人数：<span style="font-size:18px;" id="ucount"></span></p>
 <p class="text1-7 text2">主题：生日快乐</p>
 <p class="text1-7 text3">时间：$startime </p>
 <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
@@ -1728,12 +1876,7 @@ $html=<<<EOT
 			<div class="swiper-slide ">
 				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
 			</div>
-			<div class="swiper-slide ">
-				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
-			</div>
-			<div class="swiper-slide ">
-				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
-			</div>
+		$swiperslide
 		</div>
 	</div>
 </div>
@@ -1762,7 +1905,20 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
 
 
 <div class="music1">
@@ -1833,7 +1989,7 @@ $html=<<<EOT
 <div class="layer layer1-2"></div>
 <div class="layer layer1-3 button"></div>
 <div class="dialog"></div>
-<p class="text1-7 text1">报名人数<span style="font-size:18px;">$count</span></p>
+<p class="text1-7 text1">报名人数<span style="font-size:18px;" id="ucount"></span></p>
 <p class="text1-7 text2">主题：$title</p>
 <p class="text1-7 text3">时间：$startime </p>
 <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
@@ -1864,7 +2020,20 @@ $html=<<<EOT
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
 
 
 
@@ -1887,6 +2056,8 @@ var tmpid = $tmpid;
 <script type="text/javascript" src="js/yedian.js?v=5"></script>
 </body>
 </html>
+
+
 
 EOT;
 
@@ -1955,7 +2126,7 @@ $html=<<<EOT
 <div class="layer layer1-4 button"></div>
 <div class="layer layer1-4s button"></div>
 <div class="dialog"></div>
-<p class="text1-7 text1">报名人数<span style="font-size:18px;">$count</span></p>
+<p class="text1-7 text1">报名人数<span style="font-size:18px;" id="ucount"></span></p>
 <p class="text1-7 text2">主题：$title</p>
 <p class="text1-7 text3">时间：$startime </p>
 <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
@@ -1980,10 +2151,26 @@ $html=<<<EOT
 <script type="text/javascript" src="js/weiyaoqing.mobile.js"></script>
 <script type="text/javascript" src="js/preload.js"></script>
 <script type="text/javascript" src="js/response.js"></script>
+
+
 <script>
 var eid = $eid;
 var tmpid = $tmpid;
+
+var url= "http://card.allappropriate.com/h5/getucount.php?eid="+$eid;
+
+
+
+$.post(url,
+null, 
+function(text) 
+{ 
+$("#ucount").append(text); 
+} 
+);    
 </script>
+
+
 
 <div class="music1">
 <img src="img/music1_play.png" style="width: 100%">
@@ -2067,6 +2254,7 @@ mysql_close($con);
 	
 	
 }
+
 
 
 

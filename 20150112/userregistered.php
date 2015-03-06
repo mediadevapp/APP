@@ -16,6 +16,11 @@ exit(0);
 
 
   $username = $_POST['mobilenum'];
+  
+  
+
+  
+    
   $nickname = $_POST['nickname'];
   
   $pwd = $_POST['password'];
@@ -26,12 +31,20 @@ exit(0);
   
   $photo = "http://star.allappropriate.com/uploader/upload/demo.jpg";
   
-  $userAge = $_POST['birthday'];
+  //$userAge = $_POST['birthday'];
   
-  $userId =getRandStr($length=10);
+  
+   $birth = $_POST['birthday'];
+   list($by,$bm,$bd)=explode('-',$birth);
+   $cm=date('n');
+   $cd=date('j');
+   $userAge=date('Y')-$by-1;
+   if ($cm>$bm || $cm==$bm && $cd>$bd) $userAge++;
+  
+   $userId =getRandStr($length=8);
   //echo $userId;
-
-
+  
+ 
 
 function getRandStr($length) {  
 
@@ -44,6 +57,13 @@ $num = mt_rand(0, $len); $randString .= $str[$num];
  } 
  return $randString ; 
 }
+
+
+
+
+
+
+
 
 
 //php获取中文字符拼音首字母
@@ -84,10 +104,16 @@ function getFirstCharter($str){
 
 $capital = getFirstCharter($nickname);
 //echo $capital;
+ 
 
 
-
-//地址
+  $is=ismobilenum($username);
+  
+ 
+  if(trim($is)===''){
+  
+  
+  //地址
 $url = "120.131.70.218";
 //账号
 $user = "root";
@@ -100,7 +126,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into userinfo (uid,username,nickname,password,phrase,sex,xing,photo,capital,userage)  values('$userId','$username','$nickname','$pwd','$phrase','$sex','$xing','$photo','$capital','$userAge')";
+$sql = "insert into userinfo (uid,username,nickname,password,phrase,sex,xing,photo,capital,userage,birthday)  values('$userId','$username','$nickname','$pwd','$phrase','$sex','$xing','$photo','$capital','$userAge','$birth')";
 
 //echo $sql;
 
@@ -112,76 +138,127 @@ $sql = "insert into userinfo (uid,username,nickname,password,phrase,sex,xing,pho
 
  }
 
- //echo "Success";
- 
- 
+
+
 $array = array
 (
 'uid'=>$userId
 );
-
-
 echo JSON($array);
-
+ //echo "Success";
+ 
 mysql_close($con);
  
+}  
 
-/**************************************************************
-*
-* 使用特定function对数组中所有元素做处理
-* @param string &$array 要处理的字符串
-* @param string $function 要执行的函数
-* @return boolean $apply_to_keys_also 是否也应用到key上
-* @access public
-*
-*************************************************************/
-function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
-{
-static $recursive_counter = 0;
-if (++$recursive_counter > 1000) {
-die('possible deep recursion attack');
-}
-foreach ($array as $key => $value) {
-if (is_array($value)) {
-arrayRecursive($array[$key], $function, $apply_to_keys_also);
-} else {
-$array[$key] = $function($value);
-}
-if ($apply_to_keys_also && is_string($key)) {
-$new_key = $function($key);
-if ($new_key != $key) {
-$array[$new_key] = $array[$key];
-unset($array[$key]);
-}
-}
-}
-$recursive_counter--;
-}
-/**************************************************************
-*
-* 将数组转换为JSON字符串（兼容中文）
-* @param array $array 要转换的数组
-* @return string 转换得到的json字符串
-* @access public
-*
-*************************************************************/
-function JSON($array) {
-arrayRecursive($array, 'urlencode', true);
-$json = json_encode($array);
-return urldecode($json);
-}
-/**************************************************************
-$array = array
-(
-'name'=>'白羊座',
-'content1'=>123456,
-'content2'=>123456,
-'content3'=>123456
-);
-echo JSON($array);
-*************************************************************/
+
+
  
 
+
+/**************************************************************
+ *
+ *	使用特定function对数组中所有元素做处理
+ *	@param	string	&$array		要处理的字符串
+ *	@param	string	$function	要执行的函数
+ *	@return boolean	$apply_to_keys_also		是否也应用到key上
+ *	@access public
+ *
+ *************************************************************/
+function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
+{
+    static $recursive_counter = 0;
+    if (++$recursive_counter > 1000) {
+        die('possible deep recursion attack');
+    }
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            arrayRecursive($array[$key], $function, $apply_to_keys_also);
+        } else {
+            $array[$key] = $function($value);
+        }
+ 
+        if ($apply_to_keys_also && is_string($key)) {
+            $new_key = $function($key);
+            if ($new_key != $key) {
+                $array[$new_key] = $array[$key];
+                unset($array[$key]);
+            }
+        }
+    }
+    $recursive_counter--;
+}
+ 
+/**************************************************************
+ *
+ *	将数组转换为JSON字符串（兼容中文）
+ *	@param	array	$array		要转换的数组
+ *	@return string		转换得到的json字符串
+ *	@access public
+ *
+ *************************************************************/
+function JSON($array) {
+	arrayRecursive($array, 'urlencode', true);
+	$json = json_encode($array);
+	return urldecode($json);
+}
+
+/**************************************************************
+$array = array
+       (
+          'name'=>'白羊座',
+          'content1'=>123456,
+          'content2'=>123456,
+          'content3'=>123456
+          
+       );
+
+
+echo JSON($array);
+ *************************************************************/
+
+
+function ismobilenum($mobilenum){
+
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("star_app", $con);
+  
+  $sql = "SELECT * FROM userinfo WHERE username=".$mobilenum."";
+  
+  //echo($sql);
+
+  $result = mysql_query( $sql);
+
+ while($row = mysql_fetch_array($result))
+
+  {
+    $uid=$row["uid"];
+   
+  }
+  
+  return $uid;
+
+  }
+
+mysql_close($con);
+
+	
+	
+}
 
 
 ?>

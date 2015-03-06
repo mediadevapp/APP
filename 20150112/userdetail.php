@@ -114,12 +114,7 @@ if (!$con)
   {
 
   //echo $row['id'] . " " . $row['name'];
-$birth= $row['userage'];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
+
   
   
   $array = array
@@ -130,12 +125,28 @@ if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
           'sex'=> $row['sex'],
           'phrase'=> $row['phrase'],
           'photo'=> $row['photo'],
-          'birthday'=> $row['userage'],
-          'fans'=> $row['fans'],
-          'follow'=> $row['Follow'],
+          
+          'userage'=> $row['userage'],
+          
+          'birthday'=> $row['birthday'],
+          
+          'fans'=> getfans($s_uid),
+          'follow'=> getfollow($s_uid),
+          
           'friend'=> $row['Friend'],
+          
+          'regtime'=> substr($row['crtime'],0,10),
+          
           'xing'=> $row['xing'],
-          'userage'=> $age,
+          
+          'jobs'=> $row['jobs'],
+          
+          'face'=> $row['face'],
+          
+          'personal'=> $row['personal'],
+          
+           'crtime'=> $row['crtime'],
+          
           'pics'=>$row['pics']
           
           
@@ -152,5 +163,114 @@ if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
 mysql_close($con);
 
 
+//getfans($s_uid);
+//getfollow($s_uid);
 
+
+function getfans($uid){
+
+//地址
+$url = "120.131.70.218";
+//账号
+$user = "root";
+//密码
+$password = "1q2w3e4r5t6yJUSHI$";
+//连接
+$con = mysql_connect($url,$user,$password);
+//设置编码机
+mysql_query("set names 'utf8'");
+//连接数据库
+mysql_select_db("star_app");
+
+$sql = "SELECT COUNT(*) AS count FROM  `followinfo` WHERE  `uid` =".$uid."";
+
+//echo $sql;
+
+$query=mysql_query($sql);
+
+	if($rs=mysql_fetch_array($query)){
+
+     $count=$rs[0];
+
+	}else{
+	
+	    $count=0;
+	}
+
+
+ if (!mysql_query($sql,$con))
+
+ {
+
+   die('Error: ' . mysql_error());
+
+ }
+
+
+ //echo $uid;
+  //关闭连接
+ mysql_close($con);
+
+	
+return  $count;
+
+}
+
+
+
+
+
+
+function getfollow($uid){
+
+
+//地址
+$url = "120.131.70.218";
+//账号
+$user = "root";
+//密码
+$password = "1q2w3e4r5t6yJUSHI$";
+//连接
+$con = mysql_connect($url,$user,$password);
+//设置编码机
+mysql_query("set names 'utf8'");
+//连接数据库
+mysql_select_db("star_app");
+
+$sql = "SELECT COUNT(*) AS count FROM  `fansinfo` WHERE  `uid` =".$uid."";
+
+//echo $sql;
+
+$query=mysql_query($sql);
+
+	if($rs=mysql_fetch_array($query)){
+
+     $count=$rs[0];
+
+	}else{
+	
+	    $count=0;
+	}
+
+
+ if (!mysql_query($sql,$con))
+
+ {
+
+   die('Error: ' . mysql_error());
+
+ }
+
+
+ //echo $uid;
+  //关闭连接
+ mysql_close($con);
+
+	
+return  $count;
+
+
+	
+	
+}
 ?>

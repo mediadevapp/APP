@@ -1,5 +1,7 @@
 <?php
 
+@header('Content-type: text/html;charset=UTF-8');
+
 
 if (empty($_GET['aid'])){
 echo "没有输入星文编号";

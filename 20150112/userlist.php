@@ -78,7 +78,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT * FROM `userinfo` ORDER BY `userinfo`.`order` ASC  LIMIT 12";
+  $sql = "SELECT * FROM `userinfo` ORDER BY `userinfo`.`suid` ASC  LIMIT 12";
   
   //echo($sql);
 

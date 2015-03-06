@@ -158,18 +158,33 @@ if (!$con)
  }
 
 
+
+
+
+if (empty($userid)){
+
+echo "错误的模版ID或活动ID";
+exit(0);
+
+}else{
+
+echo $userid."#";
+
+
+if($endtime == '0000-00-00 00:00:00'){
+
+$endtime = '#';
+
+}
+
 //echo $eid.$userid.$username.$mobile.$title.$content.$startime.$endtime.$pics.$location.$music;
-
 $count = getcount($eid);
-
-//echo $count;
-//echo $tmpname;
-
 Global $tmpid;
 //echo $swiperslide;  
-	
 crh5($eid,$title,$startime,$endtime,$location,$username,$mobile,$count,$tmpname,$lng,$lat,$music,$voice,$tmpid);
 	
+}
+
 
 }
 
@@ -596,12 +611,8 @@ $html=<<<EOT
                                 <div class="swiper-slide ">
                                     <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
                                 </div>
-                                <div class="swiper-slide ">
-                                    <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
-                                </div>
-                                <div class="swiper-slide ">
-                                    <img src="img/eat/1-11.png" style="height:100%;width:100%;"/>
-                                </div>
+                            
+                            $swiperslide
                             </div>
                         </div>
                     </div>
@@ -721,12 +732,8 @@ $html=<<<EOT
 					<div class="swiper-slide ">
 						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
 					</div>
-					<div class="swiper-slide ">
-						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
-					</div>
-					<div class="swiper-slide ">
-						<img src="img/love/1-16.png" style="height:100%;width:100%;"/>
-					</div>
+				
+				$swiperslide
 				</div>
 			</div>
 		</div>
@@ -1152,12 +1159,10 @@ $html=<<<EOT
 						<div class="swiper-slide ">
 							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
 						</div>
-						<div class="swiper-slide ">
-							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
-						</div>
-						<div class="swiper-slide ">
-							<img src="img/hunli1/1-2.png" style="height:100%;width:100%;"/>
-						</div>
+					
+					
+					$swiperslide
+					
 					</div>
 				</div>
 			</div>
@@ -1332,12 +1337,9 @@ $html=<<<EOT
 									<div class="swiper-slide ">
 										<img src="img/hunli2/1-12.png" style="width:100%;"/>
 									</div>
-									<div class="swiper-slide ">
-										<img src="img/hunli2/1-12.png" style="width:100%;"/>
-									</div>
-									<div class="swiper-slide ">
-										<img src="img/hunli2/1-12.png" style="width:100%;"/>
-									</div>
+								
+								  $swiperslide
+								
 								</div>
 							</div>
 						</div>
@@ -1470,12 +1472,10 @@ $html=<<<EOT
 							<p class="text1-7 text5">联系人：$username </p>
 							<p class="text1-7 text6">联系方式：$mobile</p>
 						</div>
-						<div class="swiper-slide ">
-							<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-						</div>
-						<div class="swiper-slide ">
-							<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-						</div>
+					
+					
+					
+					$swiperslide
 					</div>
 				</div>
 				
@@ -1612,12 +1612,10 @@ $html=<<<EOT
 						<p class="text1-7 text5">联系人：$username </p>
 						<p class="text1-7 text6">联系方式：$mobile</p>
 					</div>
-					<div class="swiper-slide ">
-						<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-					</div>
-					<div class="swiper-slide ">
-						<img src="img/chunjie/1-10.png" style="height:60%;width:100%;"/>
-					</div>
+				
+					
+					$swiperslide
+				
 				</div>
 			</div>
 		</div>
@@ -1752,7 +1750,7 @@ $html=<<<EOT
                         <div class="layer layer1-8"></div>
 						<div class="layer layer1-17 button flush"></div>
                         <p class="text1-7 text8">报名人数：<span style="font-size:18px;" id="ucount"></span></p>
-                        <p class="text1-7 text2">主题：看电影吧</p>
+                        <p class="text1-7 text2">主题：$title</p>
                         <p class="text1-7 text3">时间：$startime </p>
                         <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
                         <p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
@@ -1869,7 +1867,7 @@ $html=<<<EOT
 <div class="layer layer1-7s button"></div>
 <div class="dialog"></div>
 <p class="text1-7 text1">报名人数：<span style="font-size:18px;" id="ucount"></span></p>
-<p class="text1-7 text2">主题：生日快乐</p>
+<p class="text1-7 text2">主题：$title</p>
 <p class="text1-7 text3">时间：$startime </p>
 <p class="text1-7 text4"><span style="opacity:0;">时间：</span>$endtime </p>
 <p class="text1-7 text5"><a href="http://api.map.baidu.com/marker?location=$lat,$lng&title=$title&content=$title&output=html">
@@ -1886,12 +1884,7 @@ $html=<<<EOT
 			<div class="swiper-slide ">
 				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
 			</div>
-			<div class="swiper-slide ">
-				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
-			</div>
-			<div class="swiper-slide ">
-				<img src="img/lvxing/1-9.png" style="width:100%;height:100%;"/>
-			</div>
+		$swiperslide
 		</div>
 	</div>
 </div>
@@ -2128,12 +2121,9 @@ $html=<<<EOT
 			<div class="swiper-slide ">
 				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
 			</div>
-			<div class="swiper-slide ">
-				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
-			</div>
-			<div class="swiper-slide ">
-				<img src="img/sports/1-2.png" style="width:100%;height:100%;"/>
-			</div>
+		
+		$swiperslide
+		
 		</div>
 	</div>
 </div>

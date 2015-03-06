@@ -78,12 +78,20 @@ $array = array
 (
 'id'=>$row['ID'],
 'name'=> $row['Name'],
-'content1'=> $row['content1'],
-'content2'=> $row['content2'],
-'content3'=> $row['content3']
+'content1'=> trimall($row['content1']),
+'content2'=> trimall($row['content2']),
+'content3'=> trimall($row['content3'])
 );
 echo JSON($array);
 }
 }
 mysql_close($con);
+
+
+
+function trimall($str)//删除空格
+{
+    $qian=array(" ","　","\t","\n","\r");$hou=array("","","","","");
+    return str_replace($qian,$hou,$str);   
+}
 ?>

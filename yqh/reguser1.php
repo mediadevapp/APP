@@ -5,6 +5,7 @@ echo "没有输入手机号";
 exit(0);
 } 
 
+
 $mobilenum = $_GET['mobilenum'];
 
 $smscode = getRandStr($length=6);
@@ -41,7 +42,7 @@ if(empty($mb)||$mb==""){
 	
 }else{
 
-	echo "#".$mb."#";
+	echo "已注册#".$mb."#";
 
 }
 
@@ -112,7 +113,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("supercard");
 
-$sql = "insert into userinfo (uid,mobilenum,username,smscodes)  values('$uid','$mobilenum','$username','$smscodes')";
+$sql = "insert into usertmp (uid,mobilenum,username,smscodes)  values('$uid','$mobilenum','$username','$smscodes')";
 
 //echo $sql;
 

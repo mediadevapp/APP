@@ -22,7 +22,19 @@ echo "请上传t图片个数";
 exit(0);
 } 
 //文件上传的个数
-$uploadN = $_POST['uploadN']; 
+$uploadN = $_POST['uploadN'];
+
+
+$un = intval(trim($uploadN), 10);	
+
+
+if ($un>4){
+
+echo "图片数量限制";
+exit(0);
+
+}
+ 
 
 //echo "Type: " . $_FILES["file"]["type"] . "<br />";
 

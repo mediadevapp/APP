@@ -1,0 +1,80 @@
+.layer1{background:url(../img/yedian/1.jpg) no-repeat;background-size: 100% 100%;z-index:2;}
+        .layer1 .layer1-1{background:url(../img/yedian/1-1.png) no-repeat;background-size: 100% 100%;width:20.78%;height:15.47%;top:12.92%;left:39.84%;}
+        .layer1 .layer1-10{background:url(../img/yedian/1-10.png) no-repeat;background-size: 100% 100%;width:7.81%;height:4.66%;top:49.03%;left:66.56%;}
+        .layer1 .layer1-2{background:url(../img/yedian/1-2.png) no-repeat;background-size: 100% 100%;width:72.03%;height:2.64%;top:16.78%;left:14.37%;}
+        .layer1 .layer1-3{background:url(../img/yedian/1-3.png) no-repeat;background-size: 100% 100%;width:37.97%;height:4.75%;top:81.63%;left:31.09%;}
+        .layer1 .layer1-4{background:url(../img/yedian/1-4.png) no-repeat;background-size: 100% 100%;width:6.09%;height:3.51%;top:45.08%;left:7.03%;}
+        .layer1 .layer1-5{background:url(../img/yedian/1-5.jpg) no-repeat;background-size: 100% 100%;width:100.00%;height:46.05%;top:0%;left:0.00%;}
+        .layer1 .layer1-6{background:url(../img/yedian/1-6.jpg) no-repeat;background-size: 100% 100%;width:100.00%;height:55.1%;top:44.9%;left:0.00%;}
+        .layer1 .layer1-7{background:url(../img/yedian/1-7.png) no-repeat;background-size: 100% 100%;width:34.69%;height:19.51%;top:35.50%;left:33.28%;}
+        .layer1 .layer1-8{background:url(../img/yedian/1-8.png) no-repeat;background-size: 100% 100%;width:46.41%;height:26.19%;top:32.25%;left:27.50%;}
+        .layer1 .layer1-9{background:url(../img/yedian/1-9.png) no-repeat;background-size: 100% 100%;width:31.56%;height:17.84%;top:36.20%;left:34.84%;}
+            @keyframes mapJump {
+            0% {transform:translateY(0);}
+            20% {transform:translateY(0);}
+            40% {transform:translateY(-15px);}
+            50% {transform:translateY(0);}
+            60% {transform:translateY(-7px);}
+            80% {transform:translateY(0);}
+            100% {transform:translateY(0);}
+        }
+        @-webkit-keyframes mapJump {
+            0% {-webkit-transform:translateY(0);}
+            20% {-webkit-transform:translateY(0);}
+            40% {-webkit-transform:translateY(-15px);}
+            50% {-webkit-transform:translateY(0);}
+            60% {-webkit-transform:translateY(-7px);}
+            80% {-webkit-transform:translateY(0);}
+            100% {-webkit-transform:translateY(0);}
+        }
+        .right{
+            animation: mapJump 2s infinite;
+            -webkit-animation: mapJump 2s infinite;
+            position:absolute;right: 45%;
+           }
+		   @keyframes flush {
+            0% {transform:scale(1);opacity:1;}
+            50% {transform:scale(0.9);opacity:0.5;}
+            100% {transform:scale(1);opacity:1;}
+        }
+        @-webkit-keyframes flush {
+            0% {-webkit-transform:scale(1);opacity:1;}
+            50% {-webkit-transform:scale(0.9);opacity:0.5;}
+            100% {-webkit-transform:scale(1);opacity:1;}
+        }
+        .flush{
+            animation: flush 2s infinite;
+            -webkit-animation: flush 2s infinite;
+        }
+		.text1-7{
+	color:#FFFFFF;
+	font-size:12px;
+	font-family:Helvetica, Microsoft YaHei,Verdana, Arial;
+	position:absolute;
+	text-align:left;
+	width:80%;
+	height:4%;
+	left:16%;
+	transform-origin:20% 50%;
+}
+.text1{
+	top:63%;
+}		
+.text2{
+	top:33.6%;
+}		
+.text3{
+	top:37.6%;
+}		
+.text4{
+	top:41.6%;
+}		
+.text5{
+	top:45.6%;
+}
+.text6{
+	top:49.6%;
+}		
+.text7{
+	top:53.6%;
+}

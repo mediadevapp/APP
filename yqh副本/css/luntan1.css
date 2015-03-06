@@ -1,0 +1,88 @@
+
+.layer1{background:url(../img/luntan1/1.jpg) no-repeat;background-size: 100% 100%;z-index:2;}
+.layer1 .layer1-1{background:url(../img/luntan1/1-1.png) no-repeat;background-size: 100% 100%;width:151.14%;height:85.00%;top:35.00%;left:-25.57%;}
+.layer1 .layer1-10{background:url(../img/luntan1/1-10.png) no-repeat;background-size: 100% 100%;width:30.31%;height:31.02%;top:7.56%;left:18.75%;}
+.layer1 .layer1-11{background:url(../img/luntan1/1-11.png) no-repeat;background-size: 100% 100%;width:37.34%;height:5.98%;top:32.69%;left:44.06%;}
+.layer1 .layer1-12{background:url(../img/luntan1/1-12.png) no-repeat;background-size: 100% 100%;width:37.19%;height:6.15%;top:26.10%;left:44.22%;}
+.layer1 .layer1-13{background:url(../img/luntan1/1-13.png) no-repeat;background-size: 100% 100%;width:62.81%;height:0.26%;top:39.46%;left:18.75%;}
+.layer1 .layer1-14{background:url(../img/luntan1/1-14.png) no-repeat;background-size: 100% 100%;width:34.84%;height:2.46%;top:40.77%;left:32.50%;}
+.layer1 .layer1-15{background:url(../img/luntan1/1-15.png) no-repeat;background-size: 100% 100%;width:3.59%;height:2.20%;top:44.99%;left:48.12%;}
+.layer1 .layer1-16{background:url(../img/luntan1/1-16.png) no-repeat;background-size: 100% 100%;width:6.25%;height:3.60%;top:72.41%;left:46.88%;}
+.layer1 .layer1-17{background:url(../img/luntan1/1-17.png) no-repeat;background-size: 100% 100%;width:11.88%;height:6.77%;top:79.53%;left:44.06%;}
+.layer1 .layer1-18{background:url(../img/luntan1/1-18.png) no-repeat;background-size: 100% 100%;width:0.47%;height:31.63%;top:47.36%;left:49.69%;}
+.layer1 .layer1-2{background:url() no-repeat;background-size: 100% 100%;width:57.97%;height:32.60%;top:10.11%;left:20.94%;}
+.layer1 .layer1-3{background:url(../img/luntan1/1-3.png) no-repeat;background-size: 100% 100%;width:100.00%;height:50%;top:0.00%;left:0.00%;}
+.layer1 .layer1-4{background:url(../img/luntan1/1-4.png) no-repeat;background-size: 100% 100%;width:60.16%;height:33.74%;top:9.58%;left:19.84%;}
+.layer1 .layer1-5{background:url(../img/luntan1/1-5.png) no-repeat;background-size: 100% 100%;width:12.50%;height:7.12%;top:84.89%;left:43.91%;}
+.layer1 .layer1-6{background:url(../img/luntan1/1-6.png) no-repeat;background-size: 100% 100%;width:4.38%;height:2.46%;top:66.17%;left:12.19%;}
+.layer1 .layer1-7{background: url(../img/luntan1/1-7.png) no-repeat; background-size: 50% 50%; background-position: center center; width: 9.06%; height: 5.1%; top: 23.13%; left: 8.88%;}
+.layer1 .layer1-8{background: url(../img/luntan1/1-8.png) no-repeat; background-size: 50% 50%; background-position: center center; width: 9.03%; height: 5.1%; top: 23.13%; left: 81.59%;}
+.layer1 .layer1-9{background:url(../img/luntan1/1-9.png) no-repeat;background-size: 100% 100%;width:95%;height:95%;top:2.5%;left:2.5%;}
+@keyframes mapJump {
+    0% {transform:translateY(0);}
+    20% {transform:translateY(0);}
+    40% {transform:translateY(-15px);}
+    50% {transform:translateY(0);}
+    60% {transform:translateY(-7px);}
+    80% {transform:translateY(0);}
+    100% {transform:translateY(0);}
+}
+@-webkit-keyframes mapJump {
+    0% {-webkit-transform:translateY(0);}
+    20% {-webkit-transform:translateY(0);}
+    40% {-webkit-transform:translateY(-15px);}
+    50% {-webkit-transform:translateY(0);}
+    60% {-webkit-transform:translateY(-7px);}
+    80% {-webkit-transform:translateY(0);}
+    100% {-webkit-transform:translateY(0);}
+}
+.right{
+    animation: mapJump 2s infinite;
+    -webkit-animation: mapJump 2s infinite;
+    position:absolute;right: 45%;
+}
+@keyframes flush {
+    0% {transform:scale(1);opacity:1;}
+    50% {transform:scale(0.9);opacity:0.5;}
+    100% {transform:scale(1);opacity:1;}
+}
+@-webkit-keyframes flush {
+    0% {-webkit-transform:scale(1);opacity:1;}
+    50% {-webkit-transform:scale(0.9);opacity:0.5;}
+    100% {-webkit-transform:scale(1);opacity:1;}
+}
+.flush{
+    animation: flush 2s infinite;
+    -webkit-animation: flush 2s infinite;
+}
+.text1-7{
+	color:#FFFFFF;
+	font-size:12px;
+	font-family:Helvetica, Microsoft YaHei,Verdana, Arial;
+	position:absolute;
+	text-align:center;
+	width:100%;
+	height:4%;
+	left:0;
+}
+.text1{
+	top:94.20%;
+}		
+.text2{
+	top:54.3%;
+}		
+.text3{
+	top:58.7%;
+}		
+.text4{
+	top:61.6%;
+}		
+.text5{
+	top:66.5%;
+}
+.text6{
+	top:73.0%;
+}		
+.text7{ 
+	top:77.7%;
+}

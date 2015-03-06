@@ -30,10 +30,13 @@ function submit(){
 				    $('.content_black').transition({opacity:0,scale:0},500);
         			$('.dialog').fadeOut(500);
         			$('#attend_num').text(parseInt($('#attend_num').text())+1);
+        			
         			$.get('http://card.allappropriate.com/h5/gogogo?eid='+eid+'&tmpid='+tmpid,function(url){
+        			
+        			//alert(url);
+        			
         				if(url !== ''){
-        					window.location.href=url;
-        				}
+        					location.reload();        				}
         			})
 				}
 				$(".submit").unbind();
