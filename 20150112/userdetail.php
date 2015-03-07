@@ -182,7 +182,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "SELECT COUNT(*) AS count FROM  `followinfo` WHERE  `uid` =".$uid."";
+$sql = "SELECT COUNT(*) AS count FROM  `fansinfo` WHERE  `uid` =".$uid."";
 
 //echo $sql;
 
@@ -237,7 +237,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "SELECT COUNT(*) AS count FROM  `fansinfo` WHERE  `uid` =".$uid."";
+$sql = "SELECT COUNT(*) AS count FROM  `followinfo` WHERE  `uid` =".$uid."";
 
 //echo $sql;
 

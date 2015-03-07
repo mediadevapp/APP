@@ -9,6 +9,70 @@ $s_uid =  $_GET['uid'];
 
 
 
+
+
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("star_app", $con);
+  
+  
+  
+  //$sql = "SELECT * FROM userinfo ";
+  
+  //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
+  
+  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT uid FROM followinfo WHERE follow_id = '".$s_uid."') order by capital asc ";
+  
+  
+  //echo($sql);
+
+  $result = mysql_query( $sql);
+  $json=array();
+  $arr=array(); 
+
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   $arr["group"]=$row["capital"];
+   $arr["uid"]=$row["uid"];
+   $arr["nickname"]=$row["nickname"];
+   $arr["phrase"]=$row["phrase"];
+   $arr["xing"]=$row["xing"];
+   $arr["sex"]=$row["sex"];
+   $arr["photo"]=$row["photo"];
+   $arr["userage"]=$row["userage"];
+   
+   
+   
+   //print_r(array_keys($arr));
+   
+   $json[]=$arr; 
+   
+  }
+  
+  echo JSON($json); 
+
+  }
+
+mysql_close($con);
+
+
+
 /**************************************************************
  *
  *	使用特定function对数组中所有元素做处理
@@ -69,82 +133,5 @@ $array = array
 
 echo JSON($array);
  *************************************************************/
-
-
-$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
-
-if (!$con)
-
-  {
-
-  die('数据库连接失败: ' . mysql_error());
-
-  }
-
-  else
-
-  {
-
-  mysql_select_db("star_app", $con);
-  
-  
-  
-  //$sql = "SELECT * FROM userinfo ";
-  
-  //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
-  
-  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT uid FROM followinfo WHERE follow_id = '".$s_uid."') order by capital asc ";
-  
-  
-  //echo($sql);
-
-  $result = mysql_query( $sql);
-  $json=array();
-  $arr=array(); 
-
- while($row = mysql_fetch_array($result))
-
-  {
-
-   //echo  " " . $row['uid'] . " " . $row['username'].",";
-   $arr["group"]=$row["capital"];
-   $arr["uid"]=$row["uid"];
-   $arr["nickname"]=$row["nickname"];
-   $arr["phrase"]=$row["phrase"];
-   $arr["xing"]=$row["xing"];
-   $arr["sex"]=$row["sex"];
-   $arr["photo"]=$row["photo"];
-   
-   
-   //生日字段处理   
-$birth=$row["userage"];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-
-//echo "生日:$birth\n";
-//echo "年龄:$age\n";
-
-
-   
-   $arr["userage"]=$age;
-   
-   
-   
-   //print_r(array_keys($arr));
-   
-   $json[]=$arr; 
-   
-  }
-  
-  echo JSON($json); 
-
-  }
-
-mysql_close($con);
-
-
 
 ?>

@@ -4,18 +4,37 @@ if (empty($_GET['uid'])){echo "请上传用户id";exit(0);}
 
 //if (empty($_POST['mobilenum'])){echo "用户手机号为空";exit(0);} 
 
-$uid = $_GET['uid'];
 
 
-if (empty($_GET['password'])){
 
-echo "必须输入修改过的密码";
+
+if (empty($_GET['newpwd'])){
+
+echo "必须输入新密码";
 exit(0);
 
 }
 
-$pwd = $_GET['password'];
-updatepassword($uid,$pwd);
+
+
+
+$uid = $_GET['uid'];
+
+$npwd = $_GET['newpwd'];
+
+
+//$ispwd = ispassword($uid,$opwd);
+
+//echo $ispwd;
+
+
+
+ updatepassword($uid,$npwd);
+
+ $message= '{"id":"'.'1'.'"}';
+ 
+ echo $message;
+
 
 
 
@@ -46,12 +65,13 @@ $sql = "UPDATE `userinfo` SET `password` = '$pwd' WHERE `userinfo`.`uid` = '$uid
 
  }
 
- echo $uid;
+ //echo $uid;
 
   //关闭连接
 
 mysql_close($con);
 }
+
 
 
 
