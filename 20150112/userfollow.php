@@ -34,7 +34,7 @@ if (!$con)
   
   //$sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '6283429397')";
   
-  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT uid FROM followinfo WHERE follow_id = '".$s_uid."') order by capital asc ";
+  $sql="SELECT * FROM userinfo WHERE uid IN (SELECT follow_id FROM followinfo WHERE uid = '".$s_uid."') order by capital asc ";
   
   
   //echo($sql);

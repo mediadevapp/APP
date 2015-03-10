@@ -5,7 +5,15 @@
 
 if (empty($_POST['fid'])){
 
-echo "没有输入被关注/取消用户ID";
+echo "没有输入被取消关注用户fid";
+exit(0);
+}
+
+
+
+if (empty($_POST['uid'])){
+
+echo "没有输入当前用户uid";
 exit(0);
 }
 

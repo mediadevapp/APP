@@ -99,7 +99,11 @@ if (!$con)
 
    //echo  " " . $row['uid'] . " " . $row['username'].",";
    $arr["contentid"]=$row["cid"];
-   $arr["userpic"] = getuserphoto($s_uid);
+   $uid = $row["uid"];
+   
+   $arr["userpic"] = getuserphoto($uid);
+   
+   $arr["uid"]=$row["uid"];
 
 
    

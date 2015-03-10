@@ -33,7 +33,11 @@ $zed = getzanuser($uid,$cid);
 
 if($zed == 1){
 	
-echo "您已经赞过了";
+
+
+ $message= '{"id":"您已经赞过了"}';
+	
+ echo $message;
 	
 }else{
 
@@ -77,6 +81,10 @@ $sql1 = "UPDATE  `frcontent` SET  `zcount` =  '$count', `zanuser` =  '$uid'  WHE
 
  }
 
+
+ $message= '{"id":"1"}';
+	
+ echo $message;
 
 
 mysql_close($con);

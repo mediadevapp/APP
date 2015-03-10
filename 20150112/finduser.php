@@ -90,7 +90,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
- $sql="SELECT * FROM userinfo WHERE uid not in (SELECT uid FROM fansinfo WHERE fan_id = '$uuid') order by capital asc limit 10 ";
+ $sql="SELECT * FROM userinfo WHERE uid not in (SELECT follow_id FROM followinfo WHERE uid = '$uuid' UNION  SELECT uid FROM userinfo WHERE uid = '$uuid')   order by capital asc limit 10 ";
   
   //echo($sql);
 
@@ -109,23 +109,7 @@ if (!$con)
    $arr["phrase"]=$row["phrase"];
    $arr["xing"]=$row["xing"];
    $arr["sex"]=$row["sex"];
-   
- 
-
-//生日字段处理   
-$birth=$row["userage"];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
-
-//echo "生日:$birth\n";
-//echo "年龄:$age\n";
-
-
-   
-   $arr["userage"]=$age;
+   $arr["userage"]=$row["userage"];
    $arr["photo"]=$row["photo"];
   
    $json[]=$arr; 

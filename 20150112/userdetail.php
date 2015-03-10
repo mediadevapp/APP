@@ -1,11 +1,21 @@
 <?php
 
-
 if (empty($_GET['uid'])){
-echo "没有输入用户ID";
+
+echo "没有输入当前用户uid";
 exit(0);
 } 
-$s_uid =  $_GET['uid'];
+$n_uid =  $_GET['uid'];
+
+
+
+if (empty($_GET['uuid'])){
+
+echo "没有输入选择用户uuid";
+exit(0);
+} 
+
+$c_uid =  $_GET['uuid'];
 
 //echo "星座名： ".$s_name." "; 
 
@@ -101,7 +111,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "SELECT * FROM userinfo where uid='".$s_uid."'";
+  $sql = "SELECT * FROM userinfo where uid='".$n_uid."'";
   
   //echo($sql);
 
@@ -130,10 +140,10 @@ if (!$con)
           
           'birthday'=> $row['birthday'],
           
-          'fans'=> getfans($s_uid),
-          'follow'=> getfollow($s_uid),
+          'fans'=> getfans($n_uid),
+          'follow'=> getfollow($n_uid),
           
-          'friend'=> $row['Friend'],
+          'relation'=> getrelation($n_uid,$c_uid),
           
           'regtime'=> substr($row['crtime'],0,10),
           
@@ -163,8 +173,8 @@ if (!$con)
 mysql_close($con);
 
 
-//getfans($s_uid);
-//getfollow($s_uid);
+//getfans($n_uid);
+//getfollow($n_uid);
 
 
 function getfans($uid){
@@ -182,7 +192,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "SELECT COUNT(*) AS count FROM  `fansinfo` WHERE  `uid` =".$uid."";
+$sql = "SELECT COUNT(DISTINCT fan_id) AS count FROM  `fansinfo` WHERE  `uid` =".$uid."";
 
 //echo $sql;
 
@@ -237,7 +247,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "SELECT COUNT(*) AS count FROM  `followinfo` WHERE  `uid` =".$uid."";
+$sql = "SELECT COUNT(DISTINCT follow_id) AS count FROM  `followinfo` WHERE  `uid` =".$uid."";
 
 //echo $sql;
 
@@ -265,12 +275,62 @@ $query=mysql_query($sql);
  //echo $uid;
   //关闭连接
  mysql_close($con);
+ 
+ return  $count;
 
-	
-return  $count;
+
+}
 
 
+
+function getrelation($uid,$cid){
+
+//function getrelation(){
+
+$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+
+if (!$con)
+
+  {
+
+  die('数据库连接失败: ' . mysql_error());
+
+  }
+
+  else
+
+  {
+
+  mysql_select_db("star_app", $con);
+  
+  $sql = "(SELECT * FROM  `fansinfo` where uid = '$uid' and fan_id = '$cid') union (SELECT * FROM  `followinfo`  where uid='$uid' and follow_id = '$cid') union (SELECT * FROM  `friendinfo` where uid='$uid' and friend_id='$cid' )";
+  
+  //echo($sql);
+
+  $result = mysql_query( $sql);
+ 
+
+ while($row = mysql_fetch_array($result))
+
+  {
+
+   //echo  " " . $row['uid'] . " " . $row['username'].",";
+   
+   $relation=$row["relation"];
+
+
+   
+  }
+  
+  return $relation; 
+
+  }
+
+mysql_close($con);
 	
 	
 }
+
+
+
 ?>

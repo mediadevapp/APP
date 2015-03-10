@@ -1,9 +1,6 @@
 <?PHP 
 
-
-
 if (empty($_POST['fid'])){
-
 echo "没有输入被关注用户ID";
 exit(0);
 }
@@ -19,6 +16,11 @@ exit(0);
 
 $uuid = $_POST['uid'];
 $fuid = $_POST['fid'];
+
+
+
+
+
 //======================================
 //用户之间关注操作
 
@@ -30,23 +32,22 @@ if (isfans($fuid)==''){
 echo "#TA不是您的粉丝#";
 
 
+
 if (isfollow($fuid)==''){
 
 followuser($fuid,$uuid);
 fanuser($fuid,$uuid);
 
-
-}else{
+}else if(isfollow($fuid)!==''){
 	
 	echo "您已经关注过TA";
 	exit(0);
-	
 }
 
 
 
 
-}else{
+}else if(isfans($fuid) !==''){
 	
 echo "#TA是您的粉丝#";
 
@@ -77,7 +78,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into followinfo (uid,follow_id)  values('$id','$fid')";
+$sql = "insert into followinfo (uid,follow_id,relation)  values('$fid','$id','您已关注TA')";
 
 
 
@@ -110,7 +111,7 @@ $con = mysql_connect($url,$user,$password);
 mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
-$sql = "insert into friendinfo (uid,friend_id,allow)  values('$id','$fid','Y')";
+$sql = "insert into friendinfo (uid,friend_id,allow,relation)  values('$id','$fid','Y','互相关注')";
  if (!mysql_query($sql,$con))
  {
 
@@ -141,7 +142,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("star_app");
 
-$sql = "insert into fansinfo (uid,fan_id)  values('$id','$fid')";
+$sql = "insert into fansinfo (uid,fan_id,relation)  values('$id','$fid','您是TA的粉丝')";
  
  if (!mysql_query($sql,$con))
  {
