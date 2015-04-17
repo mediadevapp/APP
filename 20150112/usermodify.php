@@ -16,7 +16,7 @@ $pwd = $_POST['password'];
 
 $nickname = $_POST['nickname'];
 $phrase = $_POST['phrase'];
-$age = $_POST['age'];
+
 
 //$xing = $_POST['xing'];
 
@@ -49,7 +49,7 @@ mysql_select_db("star_app");
 //$sql = "insert into userinfo (uid,username,nickname,phrase,xing,photo,userage)  values('$userId','$username','$nickname','$phrase','$xing','$photo','$userAge')";
 
 
-$sql = "UPDATE `userinfo` SET `password` = '$pwd',`nickname` = '$nickname', `phrase` = '$phrase', `sex` = '$sex',`userage` = '$age',`jobs` = '$jobs',`face` = '$face',`personal` = '$personal' WHERE `userinfo`.`uid` = '$uid'";
+$sql = "UPDATE `userinfo` SET `password` = '$pwd',`nickname` = '$nickname', `phrase` = '$phrase',`jobs` = '$jobs',`face` = '$face',`personal` = '$personal' WHERE `userinfo`.`uid` = '$uid'";
 
 
  if (!mysql_query($sql,$con))

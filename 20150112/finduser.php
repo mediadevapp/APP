@@ -90,7 +90,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
- $sql="SELECT * FROM userinfo WHERE uid not in (SELECT follow_id FROM followinfo WHERE uid = '$uuid' UNION  SELECT uid FROM userinfo WHERE uid = '$uuid')   order by capital asc limit 10 ";
+ $sql="SELECT * FROM userinfo WHERE uid not in (SELECT follow_id FROM followinfo WHERE uid = '$uuid' UNION  SELECT uid FROM userinfo WHERE uid = '$uuid')   order by capital asc limit 20 ";
   
   //echo($sql);
 

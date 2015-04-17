@@ -22,21 +22,34 @@ $pwd = $_GET['password'];
 $uid = $_GET['uid'];
 
 
-	
-updateuserinfo($uid,$pwd);
+updateuserinfo($uid,$pwd);	
+
 
 //echo $smscode."发送codes短信网关";
 // 发送给短信网关 
 
 
+/*
+$mb = ismobile($uid);
 
-
-
-
+if(empty($mb)){
+	
+ echo '{"id":"'.'0'.'"}';
+    
+}else{
+    
+  updateuserinfo($uid,$pwd);
+  
+  echo '{"id":"'.$mb.'"}';
+  
+  
+}
  
+*/
 
 
-function issmscode($smscode,$mobile){
+
+function ismobile($uid){
 
 
 
@@ -56,7 +69,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT * FROM  `userinfo` WHERE  `smscodes` =  '$smscode' and `mobilenum` = '$mobile' ";
+  $sql = "SELECT * FROM  `userinfo` WHERE `uid` = '$uid' ";
   
   //echo($sql);
 
@@ -96,7 +109,7 @@ mysql_query("set names 'utf8'");
 //连接数据库
 mysql_select_db("supercard");
 
-$sql = "UPDATE  `userinfo` SET  `password` =  '$pwd' WHERE  `uid` ='$uid' ";
+$sql = "insert into userinfo (uid,mobilenum,username,smscodes)  values('$uid','$mobilenum','$username','$smscodes')";
 
 //echo $sql;
 

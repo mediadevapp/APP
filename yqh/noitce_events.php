@@ -98,7 +98,7 @@ if (!$con)
 
   mysql_select_db("supercard", $con);
   
-  $sql = "SELECT userid,status,username,title,content,mobile,startime,endtime, datediff(startime,NOW()) as dayFactor,TIMESTAMPDIFF(hour,NOW(),startime)as hourFactor,locations  FROM  `eventsinfo` WHERE  `userid` =  '$uid'  AND  `startime` >= UNIX_TIMESTAMP( ) ";
+  $sql = "SELECT userid,status,username,title,content,mobile,startime,endtime, datediff(startime,NOW()) as dayFactor,TIMESTAMPDIFF(hour,NOW(),startime)as hourFactor,locations  FROM  `eventsinfo` WHERE  `userid` =  '$uid'  AND  `startime` >= NOW() ";
   
   //echo($sql);
 

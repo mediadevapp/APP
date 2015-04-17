@@ -303,7 +303,7 @@ if (!$con)
 
   mysql_select_db("star_app", $con);
   
-  $sql = "(SELECT * FROM  `fansinfo` where uid = '$uid' and fan_id = '$cid') union (SELECT * FROM  `followinfo`  where uid='$uid' and follow_id = '$cid') union (SELECT * FROM  `friendinfo` where uid='$uid' and friend_id='$cid' )";
+  $sql = "SELECT * FROM  `followinfo`  where follow_id ='$uid' and uid = '$cid'";
   
   //echo($sql);
 
@@ -321,6 +321,10 @@ if (!$con)
 
    
   }
+ 
+	  
+  
+  
   
   return $relation; 
 

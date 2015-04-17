@@ -22,12 +22,17 @@ $uuid = $_POST['uid'];
 $fuid = $_POST['fid'];
 //======================================
 //用户之间取消关注操作
-if (isfans($fuid)==''){
+
+echo isfans($fuid);
+
+if (isfans($fuid) ==''){
 
 echo "#TA不是您的粉丝#";
 
+delfollowuser($uuid,$fuid);
 delfollowuser($fuid,$uuid);
 delfanuser($fuid,$uuid);
+delfanuser($uuid,$fuid);
 
 
 }else{
@@ -35,7 +40,11 @@ delfanuser($fuid,$uuid);
 echo "#TA是您的粉丝#";
 
 delfrienduser($uuid,$fuid);
+delfrienduser($fuid,$uuid);
+
 delfanuser($fuid,$uuid);
+
+delfollowuser($uuid,$fuid);
 
 
 } 
@@ -64,6 +73,7 @@ mysql_select_db("star_app");
 
 $sql = "DELETE FROM `followinfo` WHERE follow_id ='$fid' and uid ='$id'";
 
+//echo $sql;
 
  if (!mysql_query($sql,$con))
 
@@ -178,9 +188,12 @@ if (!$con)
   //echo $row['uid'] . " " . $row['fan_id'];
      
      //echo $row['uid'];
-     $fa = $row['uid'];
+     $fan = $row['uid'];
     
    }
+
+
+return $fan;
 
   }
 
@@ -188,7 +201,7 @@ mysql_close($con);
 
 
 
-return $fa;
+
 
 }
 
@@ -225,8 +238,10 @@ if (!$con)
 
   //echo $row['id'] . " " . $row['name'];
   
-     $fr = $row['uid'];
+     $friend = $row['uid'];
    }
+   
+   return $friend;
 
   }
 
@@ -234,7 +249,7 @@ mysql_close($con);
 
 
 
-return $fr;
+
 
 }
 

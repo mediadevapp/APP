@@ -6,10 +6,7 @@ echo "请上传用户uid";
 exit(0);
 } 
 
-if (empty($_POST['path'])){
-echo "请上传图片路径path";
-exit(0);
-} 
+
 
 
 $uid = $_POST['uid'];

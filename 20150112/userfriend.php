@@ -73,6 +73,7 @@ mysql_select_db("star_app", $con);
 $sql="SELECT * FROM userinfo WHERE uid IN (SELECT friend_id FROM friendinfo WHERE uid = '".$s_uid."') ORDER BY capital ASC ";
 
 //echo($sql);
+
 $result = mysql_query( $sql);
 $json=array();
 $arr=array();
@@ -88,17 +89,13 @@ $arr["photo"]=$row["photo"];
 $arr["sex"]=$row["sex"];
    
 //生日字段处理   
-$birth=$row["userage"];
-list($by,$bm,$bd)=explode('.',$birth);
-$cm=date('n');
-$cd=date('j');
-$age=date('Y')-$by-1;
-if ($cm>$bm || $cm=$bm && $cd>$$bd) $age++;
+$birth=$row["birthday"];
+
 
 //echo "生日:$birth\n";
 //echo "年龄:$age\n";
 
-   $arr["userage"]=$age;
+   $arr["userage"]= $row["userage"];
    $json[]=$arr;
 
 
