@@ -70,6 +70,7 @@ $sql = "UPDATE `userinfo` SET `password` = '$pwd' WHERE `userinfo`.`uid` = '$uid
   //关闭连接
 
 mysql_close($con);
+
 }
 
 

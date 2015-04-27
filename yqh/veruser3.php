@@ -39,6 +39,7 @@ $deviceid = $_GET['deviceid'];
 // 发送给短信网关 
 
 
+echo trim($deviceid);
 
 $mb = issmscode($password,$mobile);
 

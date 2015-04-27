@@ -1,14 +1,13 @@
 <?php
 
-if (empty($_GET['uid'])){
-echo "没有输入uid";
+if (empty($_GET['eid'])){
+echo "没有输入eid";
 exit(0);
 } 
 
-$uid = $_GET['uid'];
+$eid = $_GET['eid'];
 
-getevents($uid);
-
+delevent($eid);
 /**************************************************************
  *
  *	使用特定function对数组中所有元素做处理
@@ -71,70 +70,44 @@ echo JSON($array);
  *************************************************************/
 
 
-function getevents($uid){
+function delevent($eid){
 	
-	
-$con = mysql_connect("localhost","root","1q2w3e4r5t6yJUSHI$");
+//地址
+$url = "120.131.70.218";
+//账号
+$user = "root";
+//密码
+$password = "1q2w3e4r5t6yJUSHI$";
+//连接
+$con = mysql_connect($url,$user,$password);
+//设置编码机
+mysql_query("set names 'utf8'");
+//连接数据库
+mysql_select_db("supercard");
 
-if (!$con)
+//$sql = "insert into userinfo (uid,username,nickname,phrase,xing,photo,userage)  values('$userId','$username','$nickname','$phrase','$xing','$photo','$userAge')";
 
-  {
+$sql = "UPDATE `eventsinfo` SET `delete` = 'Y' WHERE `eventsinfo`.`eventsid` = '$eid'";
 
-  die('数据库连接失败: ' . mysql_error());
+//echo $sql;
 
-  }
+ if (!mysql_query($sql,$con))
 
-  else
+ {
 
-  {
+   die('Error: ' . mysql_error());
 
-  mysql_select_db("supercard", $con);
-  
-  $sql = "SELECT * FROM  `eventsinfo` WHERE  `userid` =  '$uid'  AND  `delete` =  'N'  ORDER BY  `status` ASC ";
-  
-  //echo($sql);
+ }
 
-  $result = mysql_query($sql);
-  
-  $json=array();
-  $arr=array();
-   
- while($row = mysql_fetch_array($result))
+ echo "删除成功";
 
-  {
-
-   //echo  " " . $row['uid'] . " " . $row['username'].",";
-   $arr["uid"]=$row["userid"];
-   $arr["eid"]=$row["eventsid"];
-   $arr["status"]=$row["status"]; 
-   $arr["username"]=$row["username"];
-   $arr["title"]=$row["title"];
-   $arr["content"]=$row["content"];
-   $arr["mobile"]=$row["mobile"];
-   $arr["starttime"]=$row["startime"];
-   $arr["endtime"]=$row["endtime"];
-   $arr["pics"]=$row["pic"];
-   $arr["status"]=$row["status"];
-   $arr["locations"]=$row["locations"];
-   $arr["templateid"]=$row["templateid"];
-   
-   
-   $arr["Number of people"]= $row["ucount"];;
-   
-   
-   
-   
-   $json[]=$arr; 
-   
-  }
-  
-  echo JSON($json); 
-
-  }
+  //关闭连接
 
 mysql_close($con);
+	
 
 }
+
 
 
 
